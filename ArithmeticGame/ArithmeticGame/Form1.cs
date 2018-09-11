@@ -73,6 +73,8 @@ namespace ArithmeticGame
         private void btnSend_Click(object sender, EventArgs e)
         {
             btnSend.Enabled = false;
+            StudentForm Student = new StudentForm();
+            Student.ShowDialog();
 
         }
     }
