@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmboOperator = new System.Windows.Forms.ComboBox();
             this.txtAnswer = new System.Windows.Forms.TextBox();
             this.txtSecondNumber = new System.Windows.Forms.TextBox();
             this.txtFirstNumber = new System.Windows.Forms.TextBox();
@@ -40,7 +41,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSend = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.cmboOperator = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,11 +74,30 @@
             this.panel1.Size = new System.Drawing.Size(236, 163);
             this.panel1.TabIndex = 1;
             // 
+            // cmboOperator
+            // 
+            this.cmboOperator.BackColor = System.Drawing.SystemColors.Window;
+            this.cmboOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboOperator.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmboOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmboOperator.FormattingEnabled = true;
+            this.cmboOperator.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cmboOperator.Items.AddRange(new object[] {
+            "+",
+            "-",
+            "x",
+            "÷"});
+            this.cmboOperator.Location = new System.Drawing.Point(130, 71);
+            this.cmboOperator.Name = "cmboOperator";
+            this.cmboOperator.Size = new System.Drawing.Size(100, 24);
+            this.cmboOperator.TabIndex = 4;
+            // 
             // txtAnswer
             // 
             this.txtAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnswer.Location = new System.Drawing.Point(129, 127);
             this.txtAnswer.Name = "txtAnswer";
+            this.txtAnswer.ReadOnly = true;
             this.txtAnswer.Size = new System.Drawing.Size(100, 22);
             this.txtAnswer.TabIndex = 8;
             // 
@@ -89,6 +108,7 @@
             this.txtSecondNumber.Name = "txtSecondNumber";
             this.txtSecondNumber.Size = new System.Drawing.Size(100, 22);
             this.txtSecondNumber.TabIndex = 7;
+            this.txtSecondNumber.TextChanged += new System.EventHandler(this.txtSecondNumber_TextChanged);
             // 
             // txtFirstNumber
             // 
@@ -97,6 +117,7 @@
             this.txtFirstNumber.Name = "txtFirstNumber";
             this.txtFirstNumber.Size = new System.Drawing.Size(100, 22);
             this.txtFirstNumber.TabIndex = 5;
+            this.txtFirstNumber.TextChanged += new System.EventHandler(this.txtFirstNumber_TextChanged);
             // 
             // label6
             // 
@@ -161,7 +182,6 @@
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnExit
             // 
@@ -171,24 +191,6 @@
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // cmboOperator
-            // 
-            this.cmboOperator.BackColor = System.Drawing.SystemColors.Window;
-            this.cmboOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmboOperator.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmboOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmboOperator.FormattingEnabled = true;
-            this.cmboOperator.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cmboOperator.Items.AddRange(new object[] {
-            "+",
-            "-",
-            "x",
-            "÷"});
-            this.cmboOperator.Location = new System.Drawing.Point(130, 71);
-            this.cmboOperator.Name = "cmboOperator";
-            this.cmboOperator.Size = new System.Drawing.Size(100, 24);
-            this.cmboOperator.TabIndex = 4;
             // 
             // Form1
             // 
@@ -203,6 +205,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
