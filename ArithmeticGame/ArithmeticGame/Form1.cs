@@ -16,12 +16,11 @@ namespace ArithmeticGame
         bool secondNo = false;
         int instructorNo1;
         int instructorNo2;
+        int instuctorQuestionAnswer;
 
         public Form1()
         {
             InitializeComponent();
-
-           
         }
 
         private void txtFirstNumber_TextChanged(object sender, EventArgs e)
@@ -34,31 +33,8 @@ namespace ArithmeticGame
                     instructorNo1 = tempFirstNumber;
                     firstNo = true;
 
-                    if (firstNo == true && secondNo == true)
-                    {
-                        InstructorQuestion Question = new InstructorQuestion(instructorNo1, instructorNo2);
-
-                        if (cmboOperator.SelectedIndex == 0)
-                        {
-                            Question.AddQuestion();
-                            txtAnswer.Text = Question.instructorAnswer.ToString();
-                        }
-                        else if (cmboOperator.SelectedIndex == 1)
-                        {
-                            Question.SubtractQuestion();
-                            txtAnswer.Text = Question.instructorAnswer.ToString();
-                        }
-                        else if (cmboOperator.SelectedIndex == 2)
-                        {
-                            Question.MultuplyQuestion();
-                            txtAnswer.Text = Question.instructorAnswer.ToString();
-                        }
-                        else if (cmboOperator.SelectedIndex == 3)
-                        {
-                            Question.DivideQuestion();
-                            txtAnswer.Text = Question.instructorAnswer.ToString();
-                        }
-                    }
+                    InstructorQuestion Question = new InstructorQuestion(instructorNo1, instructorNo2);
+                    Question.QuestionAnswer(firstNo, secondNo, instuctorQuestionAnswer, cmboOperator, txtAnswer, Question);
                 }
                 else
                 {
@@ -78,31 +54,8 @@ namespace ArithmeticGame
                     instructorNo2 = tempInstructorNo2;
                     secondNo = true;
 
-                    if (firstNo == true && secondNo == true)
-                    {
-                        InstructorQuestion Question = new InstructorQuestion(instructorNo1, instructorNo2);
-
-                        if (cmboOperator.SelectedIndex == 0)
-                        {
-                            Question.AddQuestion();
-                            txtAnswer.Text = Question.instructorAnswer.ToString();
-                        }
-                        else if (cmboOperator.SelectedIndex == 1)
-                        {
-                            Question.SubtractQuestion();
-                            txtAnswer.Text = Question.instructorAnswer.ToString();
-                        }
-                        else if (cmboOperator.SelectedIndex == 2)
-                        {
-                            Question.MultuplyQuestion();
-                            txtAnswer.Text = Question.instructorAnswer.ToString();
-                        }
-                        else if (cmboOperator.SelectedIndex == 3)
-                        {
-                            Question.DivideQuestion();
-                            txtAnswer.Text = Question.instructorAnswer.ToString();
-                        }
-                    }
+                    InstructorQuestion Question = new InstructorQuestion(instructorNo1, instructorNo2);
+                    Question.QuestionAnswer(firstNo, secondNo, instuctorQuestionAnswer, cmboOperator, txtAnswer, Question);
                 }
                 else
                 {
@@ -115,6 +68,12 @@ namespace ArithmeticGame
         private void Form1_Load(object sender, EventArgs e)
         {
             cmboOperator.SelectedIndex = 0;
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            btnSend.Enabled = false;
+
         }
     }
 }

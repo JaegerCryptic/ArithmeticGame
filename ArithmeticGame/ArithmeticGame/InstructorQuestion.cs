@@ -51,5 +51,32 @@ namespace ArithmeticGame
             }
        }
         
+       public void QuestionAnswer(bool checkNo1, bool checkNo2, int answer, ComboBox myOperator, TextBox myAnswer, InstructorQuestion myQuestion)
+        {
+            if (checkNo1 == true && checkNo2 == true)
+            {
+                if (myOperator.SelectedIndex == 0)
+                {
+                    myQuestion.AddQuestion();
+                    myAnswer.Text = myQuestion.instructorAnswer.ToString();
+                }
+                else if (myOperator.SelectedIndex == 1)
+                {
+                    myQuestion.SubtractQuestion();
+                    myAnswer.Text = myQuestion.instructorAnswer.ToString();
+                }
+                else if (myOperator.SelectedIndex == 2)
+                {
+                    myQuestion.MultuplyQuestion();
+                    myAnswer.Text = myQuestion.instructorAnswer.ToString();
+                }
+                else if (myOperator.SelectedIndex == 3)
+                {
+                    myQuestion.DivideQuestion();
+                    myAnswer.Text = myQuestion.instructorAnswer.ToString();
+                }
+            }
+        }
+
     }
 }
