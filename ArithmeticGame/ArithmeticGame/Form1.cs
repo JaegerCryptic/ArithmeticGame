@@ -34,7 +34,7 @@ namespace ArithmeticGame
                     firstNo = true;
 
                     InstructorQuestion Question = new InstructorQuestion(instructorNo1, instructorNo2);
-                    Question.QuestionAnswer(firstNo, secondNo, instuctorQuestionAnswer, cmboOperator, txtAnswer, Question);
+                    Question.QuestionAnswer(firstNo, secondNo, instuctorQuestionAnswer, cmboOperator, txtAnswer);
                 }
                 else
                 {
@@ -55,7 +55,7 @@ namespace ArithmeticGame
                     secondNo = true;
 
                     InstructorQuestion Question = new InstructorQuestion(instructorNo1, instructorNo2);
-                    Question.QuestionAnswer(firstNo, secondNo, instuctorQuestionAnswer, cmboOperator, txtAnswer, Question);
+                    Question.QuestionAnswer(firstNo, secondNo, instuctorQuestionAnswer, cmboOperator, txtAnswer);
                 }
                 else
                 {
