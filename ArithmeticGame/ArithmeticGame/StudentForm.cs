@@ -10,16 +10,30 @@ using System.Windows.Forms;
 
 namespace ArithmeticGame
 {
+    public delegate void ShowFrm();
     public partial class StudentForm : Form
     {
+        public event ShowFrm evtFrm;
+        StudentQuestion Answer = new StudentQuestion();
+
         public StudentForm()
         {
             InitializeComponent();
-            StudentQuestion gay = new StudentQuestion(txtQuestion, txtStudentAnswer);
+            Answer = new StudentQuestion(txtQuestion);
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if(evtFrm != null)
+            {
+                evtFrm();
+                Answer.CheckAnswer(txtStudentAnswer);
+            }
 
         }
     }

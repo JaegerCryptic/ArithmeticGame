@@ -17,6 +17,7 @@ namespace ArithmeticGame
         int instructorNo1;
         int instructorNo2;
         int instuctorQuestionAnswer;
+        InstructorQuestion Question = new InstructorQuestion();
 
         public Form1()
         {
@@ -74,8 +75,14 @@ namespace ArithmeticGame
         {
             btnSend.Enabled = false;
             StudentForm Student = new StudentForm();
+            Student.evtFrm += new ShowFrm(Student_evtFrm);
             Student.ShowDialog();
 
+        }
+
+        void Student_evtFrm()
+        {
+            btnSend.Enabled = true;
         }
     }
 }
