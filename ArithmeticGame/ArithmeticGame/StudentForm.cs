@@ -15,6 +15,12 @@ namespace ArithmeticGame
         public StudentForm()
         {
             InitializeComponent();
+            StudentQuestion gay = new StudentQuestion(txtQuestion, txtStudentAnswer);
+        }
+
+        private void StudentForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
