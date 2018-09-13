@@ -8,15 +8,31 @@ namespace ArithmeticGame
 {
     class QuestionPackage
     {
-        public int QuesionNo1 { get; set; }
+        public int QuestionNo1 { get; set; }
         public int QuestionNo2 { get; set; }
         public int QuestionAnswer { get; set; }
 
         public QuestionPackage(int no1, int no2, int answer)
         {
-            QuesionNo1 = no1;
+            QuestionNo1 = no1;
             QuestionNo2 = no2;
             QuestionAnswer = answer;
+        }
+
+        public QuestionPackage(byte[] data)
+        {
+            QuestionNo1 = BitConverter.ToInt32(data, 0);
+            QuestionNo2 = BitConverter.ToInt32(data, 1);
+            QuestionAnswer = BitConverter.ToInt32(data, 1);
+        }
+
+        public byte[] ToByteArray()
+        {
+            List<byte> byteList = new List<byte>();
+            byteList.AddRange(BitConverter.GetBytes(QuestionNo1));
+            byteList.AddRange(BitConverter.GetBytes(QuestionNo2));
+            byteList.AddRange(BitConverter.GetBytes(QuestionAnswer));
+            return byteList.ToArray();
         }
 
     }

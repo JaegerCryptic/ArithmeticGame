@@ -10,10 +10,8 @@ using System.Windows.Forms;
 
 namespace ArithmeticGame
 {
-    public delegate void ShowFrm();
     public partial class StudentForm : Form
     {
-        public event ShowFrm evtFrm;
         StudentQuestion Answer = new StudentQuestion();
 
         public StudentForm()
@@ -29,11 +27,6 @@ namespace ArithmeticGame
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if(evtFrm != null)
-            {
-                evtFrm();
-                Answer.CheckAnswer(txtStudentAnswer);
-            }
 
         }
     }

@@ -9,8 +9,8 @@ namespace ArithmeticGame
 {
     class StudentQuestion
     {
-        string studentQuestion = MyQuestion.Question.instructorFirstNumber.ToString() + " " + MyQuestion.Question.aOperator
-            + " " + MyQuestion.Question.instructorSecondNumber.ToString() + " =";
+        //string studentQuestion = MyQuestion.Question.instructorFirstNumber.ToString() + " " + MyQuestion.Question.aOperator
+        //    + " " + MyQuestion.Question.instructorSecondNumber.ToString() + " =";
 
         public StudentQuestion()
         {
@@ -19,7 +19,7 @@ namespace ArithmeticGame
 
         public StudentQuestion(TextBox question)
         {
-            question.Text = studentQuestion;
+            //question.Text = studentQuestion;
         }
 
         public void CheckAnswer(TextBox answer)
@@ -41,16 +41,16 @@ namespace ArithmeticGame
 
         public void ValidateAnswer(int answer)
         {
-            if(answer == MyQuestion.Question.instructorAnswer)
-            {
-                MessageBox.Show("This answer is correct. Well done!", "Correct!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("This answer is incorrect. Try again.", "Incorrect",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //////if(answer == MyQuestion.Question.instructorAnswer)
+            //{
+            //    MessageBox.Show("This answer is correct. Well done!", "Correct!",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("This answer is incorrect. Try again.", "Incorrect",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
     }
