@@ -16,10 +16,14 @@ namespace ArithmeticGame
         int instructorQuestion1 { get; set; }
         int instructorQuestion2 { get; set; }
         int instructorAnswer { get; set; }
+        string instructorOperator { get; set; }
 
-        public InstructorConnection()
+        public InstructorConnection(int question1, string theOperator, int question2, int answer)
         {
-
+            instructorQuestion1 = question1;
+            instructorQuestion2 = question2;
+            instructorAnswer = answer;
+            instructorOperator = theOperator;
         }
 
         private static void ShowErrorDialog(string message)
@@ -101,7 +105,7 @@ namespace ArithmeticGame
             try
             {
                 // Serialize the textBoxes text before sending.
-                QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorQuestion2, instructorAnswer);
+                QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer);
                 byte[] buffer = package.ToByteArray();
                 clientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallback, null);
             }
@@ -115,7 +119,7 @@ namespace ArithmeticGame
             }
         }
 
-        private void ConnectQuestion()
+        public void ConnectQuestion()
         {
             try
             {

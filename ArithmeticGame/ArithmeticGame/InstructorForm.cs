@@ -44,8 +44,9 @@ namespace ArithmeticGame
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            QuestionPackage Package = new QuestionPackage(Question.instructorFirstNumber,
-                Question.instructorSecondNumber, Question.instructorAnswer);
+            InstructorConnection Package = new InstructorConnection(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber,
+                Question.instructorAnswer);
+            Package.ConnectQuestion();
         }
     }
 }

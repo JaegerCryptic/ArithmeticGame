@@ -19,12 +19,6 @@ namespace ArithmeticGame
 
         }
 
-        public InstructorQuestion(int firstNumber, int secondNumber)
-        {
-            instructorFirstNumber = firstNumber;
-            instructorSecondNumber = secondNumber;
-        }
-
         public void MultuplyQuestion()
         {
             if (instructorFirstNumber != 0 && instructorSecondNumber != 0)
