@@ -1,6 +1,6 @@
 ﻿namespace ArithmeticGame
 {
-    partial class Form1
+    partial class InstructorForm
     {
         /// <summary>
         /// Required designer variable.

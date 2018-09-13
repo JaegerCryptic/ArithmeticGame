@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ArithmeticGame
+namespace ArithmeticGameStudent
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace ArithmeticGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InstructorForm());
+            Application.Run(new StudentForm());
         }
     }
 }

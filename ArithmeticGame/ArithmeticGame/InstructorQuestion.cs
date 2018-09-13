@@ -25,55 +25,43 @@ namespace ArithmeticGame
             instructorSecondNumber = secondNumber;
         }
 
-       public void MultuplyQuestion()
-       {
+        public void MultuplyQuestion()
+        {
             if (instructorFirstNumber != 0 && instructorSecondNumber != 0)
             {
                 instructorAnswer = instructorFirstNumber * instructorSecondNumber;
-                MyQuestion.GetInstructorQuestion().instructorFirstNumber = instructorFirstNumber;
-                MyQuestion.GetInstructorQuestion().instructorSecondNumber = instructorSecondNumber;
-                MyQuestion.GetInstructorQuestion().instructorAnswer = instructorAnswer;
-                MyQuestion.GetInstructorQuestion().aOperator = "x";
+                aOperator = "x";
             }
         }
-       
-       public void AddQuestion()
-       {
+
+        public void AddQuestion()
+        {
             if (instructorFirstNumber != 0 && instructorSecondNumber != 0)
             {
                 instructorAnswer = instructorFirstNumber + instructorSecondNumber;
-                MyQuestion.GetInstructorQuestion().instructorFirstNumber = instructorFirstNumber;
-                MyQuestion.GetInstructorQuestion().instructorSecondNumber = instructorSecondNumber;
-                MyQuestion.GetInstructorQuestion().instructorAnswer = instructorAnswer;
-                MyQuestion.GetInstructorQuestion().aOperator = "+";
+                aOperator = "+";
             }
         }
 
-       public void SubtractQuestion()
-       {
+        public void SubtractQuestion()
+        {
             if (instructorFirstNumber != 0 && instructorSecondNumber != 0)
             {
                 instructorAnswer = instructorFirstNumber - instructorSecondNumber;
-                MyQuestion.GetInstructorQuestion().instructorFirstNumber = instructorFirstNumber;
-                MyQuestion.GetInstructorQuestion().instructorSecondNumber = instructorSecondNumber;
-                MyQuestion.GetInstructorQuestion().instructorAnswer = instructorAnswer;
-                MyQuestion.GetInstructorQuestion().aOperator = "-";
+                aOperator = "-";
             }
         }
 
-       public void DivideQuestion()
-       {
+        public void DivideQuestion()
+        {
             if (instructorFirstNumber != 0 && instructorSecondNumber != 0)
             {
                 instructorAnswer = instructorFirstNumber / instructorSecondNumber;
-                MyQuestion.GetInstructorQuestion().instructorFirstNumber = instructorFirstNumber;
-                MyQuestion.GetInstructorQuestion().instructorSecondNumber = instructorSecondNumber;
-                MyQuestion.GetInstructorQuestion().instructorAnswer = instructorAnswer;
-                MyQuestion.GetInstructorQuestion().aOperator = "÷";
+                aOperator = "÷";
             }
         }
-        
-       public void QuestionAnswer(bool checkNo1, bool checkNo2, int answer, ComboBox myOperator, TextBox myAnswer)
+
+        public void QuestionAnswer(bool checkNo1, bool checkNo2, ComboBox myOperator, TextBox myAnswer)
         {
             if (checkNo1 == true && checkNo2 == true)
             {
@@ -102,6 +90,41 @@ namespace ArithmeticGame
             {
                 DivideQuestion();
                 myAnswer.Text = instructorAnswer.ToString();
+            }
+        }
+
+        public void ParseQuestion1(TextBox question)
+        {
+            if (!String.IsNullOrEmpty(question.Text))
+            {
+                int tempNumber;
+                if (int.TryParse(question.Text, out tempNumber))
+                {
+                    instructorFirstNumber = tempNumber;
+                }
+                else
+                {
+                    MessageBox.Show("The value you just entered is not a numeric value. Please enter a number.", "Incorrect Value",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void ParseQuestion2(TextBox question)
+        {
+            if (!String.IsNullOrEmpty(question.Text))
+            {
+                int tempNumber;
+                if (int.TryParse(question.Text, out tempNumber))
+                {
+                    instructorSecondNumber = tempNumber;
+                }
+                else
+                {
+                    MessageBox.Show("The value you just entered is not a numeric value. Please enter a number.", "Incorrect Value",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
     }
