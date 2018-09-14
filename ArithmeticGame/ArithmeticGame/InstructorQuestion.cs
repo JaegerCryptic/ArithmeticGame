@@ -15,6 +15,7 @@ namespace ArithmeticGame
         public string aOperator { get; set; }
         public bool checkNo1 = false;
         public bool checkNo2 = false;
+        public string equals { get; set; }
 
         public InstructorQuestion()
         {
@@ -61,6 +62,7 @@ namespace ArithmeticGame
         {
             if (checkNo1 == true && checkNo2 == true)
             {
+                equals = "=";
                 Operators(myOperator, myAnswer);
             }
         }
