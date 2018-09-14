@@ -272,6 +272,7 @@
             this.btnSort2.TabIndex = 13;
             this.btnSort2.Text = "2";
             this.btnSort2.UseVisualStyleBackColor = true;
+            this.btnSort2.Click += new System.EventHandler(this.btnSort2_Click);
             // 
             // btnSort3
             // 
@@ -281,6 +282,7 @@
             this.btnSort3.TabIndex = 14;
             this.btnSort3.Text = "3";
             this.btnSort3.UseVisualStyleBackColor = true;
+            this.btnSort3.Click += new System.EventHandler(this.btnSort3_Click);
             // 
             // InstructorForm
             // 

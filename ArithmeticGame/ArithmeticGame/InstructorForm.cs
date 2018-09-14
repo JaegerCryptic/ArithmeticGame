@@ -16,6 +16,7 @@ namespace ArithmeticGame
     public partial class InstructorForm : Form
     {
         InstructorQuestion Question = new InstructorQuestion();
+        QuestionsArrayList List = new QuestionsArrayList();
         ArrayList QuestionList = new ArrayList();
 
         public InstructorForm()
@@ -47,7 +48,7 @@ namespace ArithmeticGame
 
             //Package.ConnectQuestion();
 
-              QuestionsArrayList List = new QuestionsArrayList(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber, Question.equals,
+            List = new QuestionsArrayList(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber, Question.equals,
                 Question.instructorAnswer);
 
             List.SetArray(QuestionList);
@@ -61,8 +62,17 @@ namespace ArithmeticGame
 
         private void btnSort1_Click(object sender, EventArgs e)
         {
-            //Bubble Sort
-            
+            List.BubbleSort(QuestionList, dataGridArray);
+        }
+
+        private void btnSort2_Click(object sender, EventArgs e)
+        {
+            List.InsertionSort(QuestionList, dataGridArray);
+        }
+
+        private void btnSort3_Click(object sender, EventArgs e)
+        {
+            List.SelectionSort(QuestionList, dataGridArray);
         }
     }
 }
