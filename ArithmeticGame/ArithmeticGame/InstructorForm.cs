@@ -18,6 +18,7 @@ namespace ArithmeticGame
         InstructorQuestion Question = new InstructorQuestion();
         QuestionsArrayList List = new QuestionsArrayList();
         ArrayList QuestionList = new ArrayList();
+        Hashtable QuestionTable = new Hashtable();
 
         public InstructorForm()
         {
@@ -43,16 +44,17 @@ namespace ArithmeticGame
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            //InstructorConnection Package = new InstructorConnection(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber,
-            //    Question.instructorAnswer);
+            InstructorConnection Package = new InstructorConnection(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber,
+                Question.instructorAnswer);
 
-            //Package.ConnectQuestion();
+            Package.ConnectQuestion();
 
             List = new QuestionsArrayList(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber, Question.equals,
                 Question.instructorAnswer);
 
-            List.SetArray(QuestionList);
+            List.GetArray(QuestionList);
             List.SetDataGrid(dataGridArray, QuestionList);
+            List.GetHashTable(QuestionTable, QuestionList);
         }
 
         private void btnExit_Click(object sender, EventArgs e)

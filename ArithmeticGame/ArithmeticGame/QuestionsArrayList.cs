@@ -33,10 +33,18 @@ namespace ArithmeticGame
         }
 
 
-        public void SetArray(ArrayList array)
+        public void GetArray(ArrayList array)
         {
             QuestionsArrayList Questions = new QuestionsArrayList(questionNo1, questionOperator, questionNo2, questionEquals, questionAnswer);
             array.Add(Questions);
+        }
+
+        public void GetHashTable(Hashtable hashTable, ArrayList array)
+        {
+            QuestionsArrayList Questions = new QuestionsArrayList(questionNo1, questionOperator, questionNo2, questionEquals, questionAnswer);
+            var cast = array.Cast<QuestionsArrayList>().ToDictionary(item => item.questionNo1 + item.questionOperator + 
+            item.questionNo2 + item.questionEquals + item.questionAnswer);
+            hashTable = new Hashtable(cast);
         }
 
         public void SetDataGrid(DataGridView dgv, ArrayList array)
