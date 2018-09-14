@@ -13,6 +13,8 @@ namespace ArithmeticGame
         public int instructorSecondNumber { get; set; }
         public int instructorAnswer { get; set; }
         public string aOperator { get; set; }
+        public bool checkNo1 = false;
+        public bool checkNo2 = false;
 
         public InstructorQuestion()
         {
@@ -55,7 +57,7 @@ namespace ArithmeticGame
             }
         }
 
-        public void QuestionAnswer(bool checkNo1, bool checkNo2, ComboBox myOperator, TextBox myAnswer)
+        public void QuestionAnswer(ComboBox myOperator, TextBox myAnswer)
         {
             if (checkNo1 == true && checkNo2 == true)
             {
@@ -95,6 +97,7 @@ namespace ArithmeticGame
                 if (int.TryParse(question.Text, out tempNumber))
                 {
                     instructorFirstNumber = tempNumber;
+                    checkNo1 = true;
                 }
                 else
                 {
@@ -112,6 +115,7 @@ namespace ArithmeticGame
                 if (int.TryParse(question.Text, out tempNumber))
                 {
                     instructorSecondNumber = tempNumber;
+                    checkNo2 = true;
                 }
                 else
                 {

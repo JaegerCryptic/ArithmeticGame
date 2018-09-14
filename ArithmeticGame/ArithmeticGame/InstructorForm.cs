@@ -14,8 +14,6 @@ namespace ArithmeticGame
 {
     public partial class InstructorForm : Form
     {
-        bool firstNo = false;
-        bool secondNo = false;
         InstructorQuestion Question = new InstructorQuestion();
 
         public InstructorForm()
@@ -26,15 +24,13 @@ namespace ArithmeticGame
         private void txtFirstNumber_TextChanged(object sender, EventArgs e)
         {
             Question.ParseQuestion1(txtFirstNumber);
-            firstNo = true;
-            Question.QuestionAnswer(firstNo, secondNo, cmboOperator, txtAnswer);
+            Question.QuestionAnswer(cmboOperator, txtAnswer);
         }
 
         private void txtSecondNumber_TextChanged(object sender, EventArgs e)
         {
             Question.ParseQuestion2(txtSecondNumber);
-            secondNo = true;
-            Question.QuestionAnswer(firstNo, secondNo, cmboOperator, txtAnswer);
+            Question.QuestionAnswer(cmboOperator, txtAnswer);
         }
 
         private void Form1_Load(object sender, EventArgs e)
