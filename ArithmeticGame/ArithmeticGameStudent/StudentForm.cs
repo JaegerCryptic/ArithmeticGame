@@ -19,10 +19,9 @@ namespace ArithmeticGame
         public StudentForm()
         {
             InitializeComponent();
-            //Answer = new StudentQuestion(txtQuestion);
-            //Question.SetPackage(txtQuestion);
+            Question.SetPackageAsync(txtQuestion);
         }
-            
+
         private void StudentForm_Load(object sender, EventArgs e)
         {
 
@@ -30,12 +29,8 @@ namespace ArithmeticGame
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            Answer.CheckAnswer(txtStudentAnswer, Question.answer);
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Question.SetPackage(txtQuestion);
         }
     }
 }

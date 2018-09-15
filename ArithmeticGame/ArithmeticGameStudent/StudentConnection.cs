@@ -108,6 +108,7 @@ namespace ArithmeticGame
                 Package = new QuestionPackage(buffer);
                 GetPackage(Package);
 
+
                 // Start receiving data again.
                 clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
             }
@@ -132,12 +133,13 @@ namespace ArithmeticGame
 
         }
 
-        public void SetPackage(TextBox txt)
+        public async Task SetPackageAsync(TextBox txt)
         {
-            if (check == true)
+            while(check == false)
             {
-                txt.Text = question;
+                await Task.Delay(50);
             }
+            txt.Text = question;
         }
     }
 }
