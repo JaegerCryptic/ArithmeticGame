@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ArithmeticGame
 {
     class QuestionPackage
     {
-        uint QuestionNo1 { get; set; }
-        uint QuestionNo2 { get; set; }
-        uint QuestionAnswer { get; set; }
-        string QuestionOperator { get; set; }
+        public uint QuestionNo1 { get; set; }
+        public uint QuestionNo2 { get; set; }
+        public uint QuestionAnswer { get; set; }
+        public string QuestionOperator { get; set; }
+
+        public QuestionPackage()
+        {
+
+        }
 
         public QuestionPackage(int no1, string aOperator, int no2, int answer)
         {
@@ -24,8 +28,6 @@ namespace ArithmeticGame
 
         public QuestionPackage(byte[] data)
         {
-            MessageBox.Show(QuestionOperator.Length.ToString());
-
             QuestionNo1 = BitConverter.ToUInt32(data, 0);
             QuestionNo2 = BitConverter.ToUInt32(data, 4);
             QuestionAnswer = BitConverter.ToUInt32(data, 8);
@@ -44,6 +46,5 @@ namespace ArithmeticGame
 
             return byteList.ToArray();
         }
-
     }
 }

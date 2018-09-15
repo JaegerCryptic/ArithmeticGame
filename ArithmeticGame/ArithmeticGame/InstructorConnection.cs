@@ -125,7 +125,7 @@ namespace ArithmeticGame
             {
                 clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 // Connect to the specified host.
-                var endPoint = new IPEndPoint(IPAddress.Any, 3333);
+                var endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3333);
                 clientSocket.BeginConnect(endPoint, ConnectCallback, null);
 
                 SendQuestion();
