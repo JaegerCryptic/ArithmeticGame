@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticGameInstructor", "ArithmeticGame\ArithmeticGameInstructor.csproj", "{F4556EB0-60B5-412E-AC21-3F7C06C1EAFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticGameStudent", "ArithmeticGameStudent\ArithmeticGameStudent.csproj", "{9AB5F3E4-A684-4FF5-B193-85557118DEB8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F4556EB0-60B5-412E-AC21-3F7C06C1EAFD} = {F4556EB0-60B5-412E-AC21-3F7C06C1EAFD}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

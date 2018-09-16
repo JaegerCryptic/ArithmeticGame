@@ -149,7 +149,7 @@ namespace ArithmeticGame
                 while (true)
                 {
                     txt.Text = question;
-                    await Task.Delay(200);
+                    await Task.Delay(100);
                 }
             });
         }
