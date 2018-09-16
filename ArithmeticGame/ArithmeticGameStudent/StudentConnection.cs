@@ -17,6 +17,7 @@ namespace ArithmeticGame
         public int instructorAnswer { get; set; }
         string instructorOperator { get; set; }
         bool check = false;
+        private bool toggleCheck = false;
 
         private Socket serverSocket;
         private Socket clientSocket;
@@ -71,10 +72,12 @@ namespace ArithmeticGame
             catch (SocketException ex)
             {
                 ShowErrorDialog(ex.Message);
+                ToggleControlState(false);
             }
             catch (ObjectDisposedException ex)
             {
                 ShowErrorDialog(ex.Message);
+                ToggleControlState(false);
             }
         }
 
@@ -110,7 +113,7 @@ namespace ArithmeticGame
                 // The received data is deserialized in the PersonPackage ctor.
                 Package = new QuestionPackage(buffer);
                 GetPackage(Package);
-
+                ToggleControlState(true);
 
                 // Start receiving data again.
                 clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
@@ -156,18 +159,36 @@ namespace ArithmeticGame
                 QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer);
                 byte[] buffer = package.ToByteArray();
                 clientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallback, null);
-                //ToggleControlState(false);
+                ToggleControlState(false);
             }
             catch (SocketException ex)
             {
                 ShowErrorDialog(ex.Message);
-                //ToggleControlState(false);
+                ToggleControlState(false);
             }
             catch (ObjectDisposedException ex)
             {
                 ShowErrorDialog(ex.Message);
-                //ToggleControlState(false);
+                ToggleControlState(false);
             }
+        }
+
+        private void ToggleControlState(bool toggle)
+        {
+            toggleCheck = toggle;
+        }
+
+        public void UpdateControlState(Button btn)
+        {
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    btn.Enabled = toggleCheck;
+
+                    await Task.Delay(200);
+                }
+            });
         }
 
     }

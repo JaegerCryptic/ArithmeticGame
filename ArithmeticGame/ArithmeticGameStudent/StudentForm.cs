@@ -20,11 +20,12 @@ namespace ArithmeticGame
         {
             InitializeComponent();
             Question.SetPackageAsync(txtQuestion);
+            Question.UpdateControlState(btnSubmit);
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
         {
-
+            btnSubmit.Enabled = false;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
