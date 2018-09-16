@@ -12,7 +12,10 @@ namespace ArithmeticGame
     class StudentConnection
     {
         public string question { get; set; }
-        public int answer { get; set; }
+        int instructorQuestion1 { get; set; }
+        int instructorQuestion2 { get; set; }
+        public int instructorAnswer { get; set; }
+        string instructorOperator { get; set; }
         bool check = false;
 
         private Socket serverSocket;
@@ -29,6 +32,28 @@ namespace ArithmeticGame
         private static void ShowErrorDialog(string message)
         {
             MessageBox.Show(message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void SendQuestion()
+        {
+            try
+            {
+                // Serialize the textBoxes text before sending.
+                QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer);
+                byte[] buffer = package.ToByteArray();
+                clientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallback, null);
+                //ToggleControlState(false);
+            }
+            catch (SocketException ex)
+            {
+                ShowErrorDialog(ex.Message);
+                //ToggleControlState(false);
+            }
+            catch (ObjectDisposedException ex)
+            {
+                ShowErrorDialog(ex.Message);
+                //ToggleControlState(false);
+            }
         }
 
         private void StartServer()
@@ -128,8 +153,9 @@ namespace ArithmeticGame
             check = true;
             question = package.QuestionNo1.ToString() + " " + package.QuestionOperator.ToString() + " "
                 + package.QuestionNo2.ToString() + " " + "=";
+            instructorQuestion1 = Convert.ToInt32(package.QuestionNo1);
 
-            answer = Convert.ToInt32(package.QuestionAnswer);
+            instructorAnswer = Convert.ToInt32(package.QuestionAnswer);
 
         }
 

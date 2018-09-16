@@ -9,10 +9,15 @@ namespace ArithmeticGame
 {
     class QuestionPackage
     {
-        uint QuestionNo1 { get; set; }
-        uint QuestionNo2 { get; set; }
-        uint QuestionAnswer { get; set; }
-        string QuestionOperator { get; set; }
+        public uint QuestionNo1 { get; set; }
+        public uint QuestionNo2 { get; set; }
+        public uint QuestionAnswer { get; set; }
+        public string QuestionOperator { get; set; }
+
+        public QuestionPackage()
+        {
+
+        }
 
         public QuestionPackage(int no1, string aOperator, int no2, int answer)
         {
