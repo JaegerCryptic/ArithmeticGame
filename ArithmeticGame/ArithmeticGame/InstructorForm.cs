@@ -55,6 +55,7 @@ namespace ArithmeticGame
             List.GetArray(QuestionList);
             List.SetDataGrid(dataGridArray, QuestionList);
             List.GetHashTable(QuestionTable, QuestionList);
+
             Package.UpdateControlState(btnSend);
 
         }

@@ -34,28 +34,6 @@ namespace ArithmeticGame
             MessageBox.Show(message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void SendQuestion()
-        {
-            try
-            {
-                // Serialize the textBoxes text before sending.
-                QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer);
-                byte[] buffer = package.ToByteArray();
-                clientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallback, null);
-                //ToggleControlState(false);
-            }
-            catch (SocketException ex)
-            {
-                ShowErrorDialog(ex.Message);
-                //ToggleControlState(false);
-            }
-            catch (ObjectDisposedException ex)
-            {
-                ShowErrorDialog(ex.Message);
-                //ToggleControlState(false);
-            }
-        }
-
         private void StartServer()
         {
             try
@@ -153,50 +131,12 @@ namespace ArithmeticGame
             check = true;
             question = package.QuestionNo1.ToString() + " " + package.QuestionOperator.ToString() + " "
                 + package.QuestionNo2.ToString() + " " + "=";
-            instructorQuestion1 = Convert.ToInt32(package.QuestionNo1);
 
+            instructorQuestion1 = Convert.ToInt32(package.QuestionNo1);
+            instructorOperator = package.QuestionOperator.ToString();
+            instructorQuestion2 = Convert.ToInt32(package.QuestionNo2);
             instructorAnswer = Convert.ToInt32(package.QuestionAnswer);
 
-        }
-
-        public void ConnectQuestion()
-        {
-            try
-            {
-                clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                // Connect to the specified host.
-                var endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3333);
-                clientSocket.BeginConnect(endPoint, ConnectCallback, null);
-
-                SendQuestion();
-            }
-            catch (SocketException ex)
-            {
-                ShowErrorDialog(ex.Message);
-            }
-            catch (ObjectDisposedException ex)
-            {
-                ShowErrorDialog(ex.Message);
-            }
-        }
-
-        private void ConnectCallback(IAsyncResult AR)
-        {
-            try
-            {
-                clientSocket.EndConnect(AR);
-                //ToggleControlState(true);
-                buffer = new byte[clientSocket.ReceiveBufferSize];
-                clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
-            }
-            catch (SocketException ex)
-            {
-                ShowErrorDialog(ex.Message);
-            }
-            catch (ObjectDisposedException ex)
-            {
-                ShowErrorDialog(ex.Message);
-            }
         }
 
         public async Task SetPackageAsync(TextBox txt)
@@ -207,5 +147,28 @@ namespace ArithmeticGame
             }
             txt.Text = question;
         }
+
+        public void SendQuestion()
+        {
+            try
+            {
+                // Serialize the textBoxes text before sending.
+                QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer);
+                byte[] buffer = package.ToByteArray();
+                clientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallback, null);
+                //ToggleControlState(false);
+            }
+            catch (SocketException ex)
+            {
+                ShowErrorDialog(ex.Message);
+                //ToggleControlState(false);
+            }
+            catch (ObjectDisposedException ex)
+            {
+                ShowErrorDialog(ex.Message);
+                //ToggleControlState(false);
+            }
+        }
+
     }
 }

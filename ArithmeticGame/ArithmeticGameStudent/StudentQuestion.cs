@@ -38,13 +38,13 @@ namespace ArithmeticGame
             {
                 MessageBox.Show("This answer is correct.", "Correct!",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Question.ConnectQuestion();
+                Question.SendQuestion();
             }
             else
             {
                 MessageBox.Show("This answer is incorrect.", "Incorrect",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Question.ConnectQuestion();
+                Question.SendQuestion();
             }
         }
 

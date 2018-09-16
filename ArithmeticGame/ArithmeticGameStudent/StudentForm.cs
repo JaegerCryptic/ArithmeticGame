@@ -30,7 +30,6 @@ namespace ArithmeticGame
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             Answer.CheckAnswer(txtStudentAnswer, Question.instructorAnswer, Question);
-
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

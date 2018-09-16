@@ -45,8 +45,9 @@ namespace ArithmeticGame
                     return;
                 }
 
-
-                string message = Encoding.ASCII.GetString(buffer);
+                // The received data is deserialized in the PersonPackage ctor.
+                Package = new QuestionPackage(buffer);
+                GetPackage(Package);
 
                 // Start receiving data again.
                 clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
@@ -163,7 +164,14 @@ namespace ArithmeticGame
                     await Task.Delay(100);
                 }
             });
-           
+        }
+
+        private void GetPackage(QuestionPackage package)
+        {
+            instructorQuestion1 = Convert.ToInt32(package.QuestionNo1);
+            instructorOperator = package.QuestionOperator.ToString();
+            instructorQuestion2 = Convert.ToInt32(package.QuestionNo2);
+            instructorAnswer = Convert.ToInt32(package.QuestionAnswer);
         }
     }
 }

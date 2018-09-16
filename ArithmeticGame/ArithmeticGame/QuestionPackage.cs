@@ -29,8 +29,6 @@ namespace ArithmeticGame
 
         public QuestionPackage(byte[] data)
         {
-            MessageBox.Show(QuestionOperator.Length.ToString());
-
             QuestionNo1 = BitConverter.ToUInt32(data, 0);
             QuestionNo2 = BitConverter.ToUInt32(data, 4);
             QuestionAnswer = BitConverter.ToUInt32(data, 8);
