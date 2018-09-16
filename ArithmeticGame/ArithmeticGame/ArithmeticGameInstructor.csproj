@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NodeList.cs" />
     <Compile Include="Tree.cs" />
     <Compile Include="InstructorConnection.cs" />
     <Compile Include="InstructorForm.cs">

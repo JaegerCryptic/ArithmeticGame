@@ -16,7 +16,6 @@ namespace ArithmeticGame
         int instructorQuestion2 { get; set; }
         public int instructorAnswer { get; set; }
         string instructorOperator { get; set; }
-        bool check = false;
         private bool toggleCheck = false;
 
         private Socket serverSocket;
@@ -131,7 +130,6 @@ namespace ArithmeticGame
 
         private void GetPackage(QuestionPackage package)
         {
-            check = true;
             question = package.QuestionNo1.ToString() + " " + package.QuestionOperator.ToString() + " "
                 + package.QuestionNo2.ToString() + " " + "=";
 
