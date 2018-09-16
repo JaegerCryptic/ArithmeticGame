@@ -8,7 +8,5 @@ namespace ArithmeticGame
 {
     class BinaryTree
     {
-
-
     }
 }
