@@ -19,6 +19,8 @@ namespace ArithmeticGame
         QuestionsArrayList List = new QuestionsArrayList();
         ArrayList QuestionList = new ArrayList();
         Hashtable QuestionTable = new Hashtable();
+        Tree BinaryTree = new Tree();
+        Node root;
 
         public InstructorForm()
         {
@@ -56,6 +58,9 @@ namespace ArithmeticGame
             List.SetDataGrid(dataGridArray, QuestionList);
             List.GetHashTable(QuestionTable, QuestionList);
 
+            BinaryTree.AddRecursive(Question.instructorAnswer);
+            root = BinaryTree.SetRoot(BinaryTree);
+
             Package.UpdateControlState(btnSend);
 
         }
@@ -78,6 +83,21 @@ namespace ArithmeticGame
         private void btnSort3_Click(object sender, EventArgs e)
         {
             List.SelectionSort(QuestionList, dataGridArray);
+        }
+
+        private void btnDisplayInOrder_Click(object sender, EventArgs e)
+        {
+            BinaryTree.InOrder(root);
+        }
+
+        private void btnDisplayPreOrder_Click(object sender, EventArgs e)
+        {
+            BinaryTree.PreOrder(root);
+        }
+
+        private void btnDisplayPostOrder_Click(object sender, EventArgs e)
+        {
+            BinaryTree.PostOrder(root);
         }
     }
 }

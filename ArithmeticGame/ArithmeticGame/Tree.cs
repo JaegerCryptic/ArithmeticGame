@@ -20,44 +20,6 @@ namespace ArithmeticGame
             top = new Node(myValue);
         }
 
-        public void Add(int myValue)
-        {
-            if(top == null)
-            {
-                top = new Node(myValue);
-                return;
-            }
-            Node currentNode = top;
-            bool inserted = false;
-            do
-            {
-                if (myValue < currentNode.value)
-                {
-                    if (currentNode.left == null)
-                    {
-                        currentNode.left = new Node(myValue);
-                        inserted = true;
-                    }
-                    else
-                    {
-                        currentNode = currentNode.left;
-                    }
-                    if (myValue >= currentNode.value)
-                    {
-                        if (currentNode.right == null)
-                        {
-                            currentNode.right = new Node(myValue);
-                            inserted = true;
-                        }
-                        else
-                        {
-                            currentNode = currentNode.right;
-                        }
-                    }
-                }
-            } while (!inserted);
-        }
-
         public void AddRecursive(int myValue)
         {
             Addrc(ref top, myValue);
@@ -73,8 +35,83 @@ namespace ArithmeticGame
             }
             if(myValue < node.value)
             {
+                Addrc(ref node.left, myValue);
+            }
+            if(myValue >= node.value)
+            {
+                Addrc(ref node.right, myValue);
+            }
+        }
+
+        public Node findNodeByValue(Node node, int myValue)
+        {
+
+            if (node == null)
+            {
+                return null;
+            }
+            if (node.value == myValue)
+            {
+                return node;
+            }
+            if (node.value > myValue) return findNodeByValue(node.left, myValue);
+            return findNodeByValue(node.right, myValue);
+
+        }
+
+        public void DisplayTree(Node node, ref string myString)
+        {
+            if (node == null)
+            {
+                node = top;
+            }
+            if (node.left != null)
+            {
+                DisplayTree(node.left, ref myString);
+                myString += node.value.ToString().PadLeft(3);
+            }
+            else
+            {
+                myString += node.value.ToString().PadLeft(3);
+            }
+            if (node.right != null)
+            {
+                DisplayTree(node.right, ref myString);
 
             }
+        }
+
+        public void PreOrder(Node root)
+        {
+            if (root != null)
+            {
+                PreOrder(root.left);
+                PreOrder(root.right);
+            }
+        }
+
+        public void InOrder(Node root)
+        {
+            if (root != null)
+            {
+                InOrder(root.left);
+                InOrder(root.right);
+            }
+        }
+
+        public void PostOrder(Node root)
+        {
+            if (root != null)
+            {
+                PostOrder(root.left);
+                PostOrder(root.right);
+            }
+        }
+
+        public Node SetRoot(Tree tree)
+        {
+            Node root = tree.top;
+            return root;
         }
 
     }
