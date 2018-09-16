@@ -142,13 +142,16 @@ namespace ArithmeticGame
 
         }
 
-        public async Task SetPackageAsync(TextBox txt)
+        public void SetPackageAsync(TextBox txt)
         {
-            while(check == false)
+            Task.Run(async () =>
             {
-                await Task.Delay(50);
-            }
-            txt.Text = question;
+                while (true)
+                {
+                    txt.Text = question;
+                    await Task.Delay(200);
+                }
+            });
         }
 
         public void SendQuestion()
