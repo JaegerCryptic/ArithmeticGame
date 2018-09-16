@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmboOperator = new System.Windows.Forms.ComboBox();
@@ -52,7 +52,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lstBoxLinked = new System.Windows.Forms.ListBox();
             this.btnDisplayLinkList = new System.Windows.Forms.Button();
-            this.lstBoxTree = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -63,6 +62,7 @@
             this.btnSaveInOrder = new System.Windows.Forms.Button();
             this.btnDisplayPostOrder = new System.Windows.Forms.Button();
             this.btnSavePostOrder = new System.Windows.Forms.Button();
+            this.txtBinaryTree = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridArray)).BeginInit();
             this.SuspendLayout();
@@ -252,14 +252,14 @@
             this.dataGridArray.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridArray.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridArray.ColumnHeadersVisible = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridArray.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridArray.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridArray.EnableHeadersVisualStyles = false;
             this.dataGridArray.Location = new System.Drawing.Point(377, 119);
             this.dataGridArray.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -267,8 +267,8 @@
             this.dataGridArray.Name = "dataGridArray";
             this.dataGridArray.RowHeadersVisible = false;
             this.dataGridArray.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridArray.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridArray.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridArray.Size = new System.Drawing.Size(403, 164);
             this.dataGridArray.TabIndex = 10;
             // 
@@ -348,16 +348,6 @@
             this.btnDisplayLinkList.TabIndex = 17;
             this.btnDisplayLinkList.Text = "Display";
             this.btnDisplayLinkList.UseVisualStyleBackColor = true;
-            // 
-            // lstBoxTree
-            // 
-            this.lstBoxTree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstBoxTree.ItemHeight = 20;
-            this.lstBoxTree.Location = new System.Drawing.Point(15, 510);
-            this.lstBoxTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lstBoxTree.Name = "lstBoxTree";
-            this.lstBoxTree.Size = new System.Drawing.Size(787, 64);
-            this.lstBoxTree.TabIndex = 18;
             // 
             // label10
             // 
@@ -473,6 +463,16 @@
             this.btnSavePostOrder.Text = "Save";
             this.btnSavePostOrder.UseVisualStyleBackColor = true;
             // 
+            // txtBinaryTree
+            // 
+            this.txtBinaryTree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBinaryTree.Location = new System.Drawing.Point(15, 510);
+            this.txtBinaryTree.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBinaryTree.Multiline = true;
+            this.txtBinaryTree.Name = "txtBinaryTree";
+            this.txtBinaryTree.Size = new System.Drawing.Size(787, 64);
+            this.txtBinaryTree.TabIndex = 9;
+            // 
             // InstructorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -480,6 +480,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(819, 674);
+            this.Controls.Add(this.txtBinaryTree);
             this.Controls.Add(this.btnSavePostOrder);
             this.Controls.Add(this.btnDisplayPostOrder);
             this.Controls.Add(this.btnSaveInOrder);
@@ -490,7 +491,6 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.lstBoxTree);
             this.Controls.Add(this.btnDisplayLinkList);
             this.Controls.Add(this.lstBoxLinked);
             this.Controls.Add(this.label9);
@@ -539,7 +539,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ListBox lstBoxLinked;
         private System.Windows.Forms.Button btnDisplayLinkList;
-        private System.Windows.Forms.ListBox lstBoxTree;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -550,6 +549,7 @@
         private System.Windows.Forms.Button btnSaveInOrder;
         private System.Windows.Forms.Button btnDisplayPostOrder;
         private System.Windows.Forms.Button btnSavePostOrder;
+        private System.Windows.Forms.TextBox txtBinaryTree;
     }
 }
 

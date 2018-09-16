@@ -87,17 +87,29 @@ namespace ArithmeticGame
 
         private void btnDisplayInOrder_Click(object sender, EventArgs e)
         {
+            string treeToString = "IN-ORDER: ";
+
             BinaryTree.InOrder(root);
+            BinaryTree.DisplayTree(root, ref treeToString);
+            txtBinaryTree.Text = treeToString;
         }
 
         private void btnDisplayPreOrder_Click(object sender, EventArgs e)
         {
+            string treeToString = "PRE-ORDER: ";
+
             BinaryTree.PreOrder(root);
+            BinaryTree.DisplayTree(root, ref treeToString);
+            txtBinaryTree.Text = treeToString;
         }
 
         private void btnDisplayPostOrder_Click(object sender, EventArgs e)
         {
+            string treeToString = "POST-ORDER: ";
+
             BinaryTree.PostOrder(root);
+            BinaryTree.DisplayTree(root, ref treeToString);
+            txtBinaryTree.Text = treeToString;
         }
     }
 }

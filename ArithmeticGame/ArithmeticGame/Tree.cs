@@ -77,7 +77,6 @@ namespace ArithmeticGame
             if (node.right != null)
             {
                 DisplayTree(node.right, ref myString);
-
             }
         }
 
