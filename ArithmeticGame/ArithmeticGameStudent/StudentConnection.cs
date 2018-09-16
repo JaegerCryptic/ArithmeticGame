@@ -159,6 +159,46 @@ namespace ArithmeticGame
 
         }
 
+        public void ConnectQuestion()
+        {
+            try
+            {
+                clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                // Connect to the specified host.
+                var endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3333);
+                clientSocket.BeginConnect(endPoint, ConnectCallback, null);
+
+                SendQuestion();
+            }
+            catch (SocketException ex)
+            {
+                ShowErrorDialog(ex.Message);
+            }
+            catch (ObjectDisposedException ex)
+            {
+                ShowErrorDialog(ex.Message);
+            }
+        }
+
+        private void ConnectCallback(IAsyncResult AR)
+        {
+            try
+            {
+                clientSocket.EndConnect(AR);
+                //ToggleControlState(true);
+                buffer = new byte[clientSocket.ReceiveBufferSize];
+                clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
+            }
+            catch (SocketException ex)
+            {
+                ShowErrorDialog(ex.Message);
+            }
+            catch (ObjectDisposedException ex)
+            {
+                ShowErrorDialog(ex.Message);
+            }
+        }
+
         public async Task SetPackageAsync(TextBox txt)
         {
             while(check == false)

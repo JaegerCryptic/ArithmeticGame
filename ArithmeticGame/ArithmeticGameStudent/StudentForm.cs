@@ -29,7 +29,7 @@ namespace ArithmeticGame
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            Answer.CheckAnswer(txtStudentAnswer, Question.instructorAnswer);
+            Answer.CheckAnswer(txtStudentAnswer, Question.instructorAnswer, Question);
 
         }
 

@@ -15,14 +15,14 @@ namespace ArithmeticGame
 
         }
 
-        public void CheckAnswer(TextBox answer, int instructorAnswer)
+        public void CheckAnswer(TextBox answer, int instructorAnswer, StudentConnection question)
         {
             if (!String.IsNullOrEmpty(answer.Text))
             {
                 int tempFirstNumber;
                 if (int.TryParse(answer.Text, out tempFirstNumber))
                 {
-                    ValidateAnswer(tempFirstNumber, instructorAnswer);
+                    ValidateAnswer(tempFirstNumber, instructorAnswer, question);
                 }
                 else
                 {
@@ -32,17 +32,19 @@ namespace ArithmeticGame
             }
         }
 
-        public void ValidateAnswer(int studentAnswer, int answer)
+        public void ValidateAnswer(int studentAnswer, int answer, StudentConnection Question)
         {
             if (studentAnswer == answer)
             {
                 MessageBox.Show("This answer is correct.", "Correct!",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Question.ConnectQuestion();
             }
             else
             {
                 MessageBox.Show("This answer is incorrect.", "Incorrect",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Question.ConnectQuestion();
             }
         }
 
