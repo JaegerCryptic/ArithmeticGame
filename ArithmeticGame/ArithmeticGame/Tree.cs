@@ -1,4 +1,10 @@
-﻿using System;
+﻿///-------------------------------------------------------------------------------------------------
+// file:	Tree.cs
+//
+// summary:	Implements the tree class
+///-------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,24 +12,62 @@ using System.Threading.Tasks;
 
 namespace ArithmeticGame
 {
+    ///-------------------------------------------------------------------------------------------------
+    /// <summary>   A tree. </summary>
+    ///
+    /// <remarks>   Jaege, 17/09/2018. </remarks>
+    ///-------------------------------------------------------------------------------------------------
+
     class Tree
     {
+        /// <summary>   The top. </summary>
         public Node top;
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///-------------------------------------------------------------------------------------------------
 
         public Tree()
         {
             top = null;
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="myValue">  my value. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         public Tree(int myValue)
         {
             top = new Node(myValue);
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Adds a recursive. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="myValue">  my value. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         public void AddRecursive(int myValue)
         {
             Addrc(ref top, myValue);
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Addrcs. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="node">     [in,out] The node. </param>
+        /// <param name="myValue">  my value. </param>
+        ///-------------------------------------------------------------------------------------------------
 
         private void Addrc(ref Node node, int myValue)
         {
@@ -43,6 +87,17 @@ namespace ArithmeticGame
             }
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Searches for the first node by value. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="node">     The node. </param>
+        /// <param name="myValue">  my value. </param>
+        ///
+        /// <returns>   The found node by value. </returns>
+        ///-------------------------------------------------------------------------------------------------
+
         public Node findNodeByValue(Node node, int myValue)
         {
 
@@ -58,6 +113,15 @@ namespace ArithmeticGame
             return findNodeByValue(node.right, myValue);
 
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Displays a tree. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="node">     The node. </param>
+        /// <param name="myString"> [in,out] my string. </param>
+        ///-------------------------------------------------------------------------------------------------
 
         public void DisplayTree(Node node, ref string myString)
         {
@@ -80,6 +144,14 @@ namespace ArithmeticGame
             }
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Pre order. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="root"> The root. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         public void PreOrder(Node root)
         {
             if (root != null)
@@ -88,6 +160,14 @@ namespace ArithmeticGame
                 PreOrder(root.right);
             }
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   In order. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="root"> The root. </param>
+        ///-------------------------------------------------------------------------------------------------
 
         public void InOrder(Node root)
         {
@@ -98,6 +178,14 @@ namespace ArithmeticGame
             }
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Posts an order. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="root"> The root. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         public void PostOrder(Node root)
         {
             if (root != null)
@@ -106,6 +194,16 @@ namespace ArithmeticGame
                 PostOrder(root.right);
             }
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Sets a root. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="tree"> The tree. </param>
+        ///
+        /// <returns>   A Node. </returns>
+        ///-------------------------------------------------------------------------------------------------
 
         public Node SetRoot(Tree tree)
         {

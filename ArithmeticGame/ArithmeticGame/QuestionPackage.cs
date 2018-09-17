@@ -1,4 +1,10 @@
-﻿using System;
+﻿///-------------------------------------------------------------------------------------------------
+// file:	QuestionPackage.cs
+//
+// summary:	Implements the question package class
+///-------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,18 +13,69 @@ using System.Windows.Forms;
 
 namespace ArithmeticGame
 {
+    ///-------------------------------------------------------------------------------------------------
+    /// <summary>   A question package. </summary>
+    ///
+    /// <remarks>   Jaege, 17/09/2018. </remarks>
+    ///-------------------------------------------------------------------------------------------------
+
     class QuestionPackage
     {
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the question no 1. </summary>
+        ///
+        /// <value> The question no 1. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         public uint QuestionNo1 { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the question no 2. </summary>
+        ///
+        /// <value> The question no 2. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         public uint QuestionNo2 { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the question answer. </summary>
+        ///
+        /// <value> The question answer. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         public uint QuestionAnswer { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the question operator. </summary>
+        ///
+        /// <value> The question operator. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         public string QuestionOperator { get; set; }
+        /// <summary>   The value. </summary>
         public short Value;
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///-------------------------------------------------------------------------------------------------
 
         public QuestionPackage()
         {
 
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="no1">          The first no. </param>
+        /// <param name="aOperator">    The operator. </param>
+        /// <param name="no2">          The second no. </param>
+        /// <param name="answer">       The answer. </param>
+        ///-------------------------------------------------------------------------------------------------
 
         public QuestionPackage(int no1, string aOperator, int no2, int answer)
         {
@@ -27,6 +84,14 @@ namespace ArithmeticGame
             QuestionAnswer = Convert.ToUInt32(answer);
             QuestionOperator = aOperator;
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="data"> The data. </param>
+        ///-------------------------------------------------------------------------------------------------
 
         public QuestionPackage(byte[] data)
         {
@@ -37,6 +102,14 @@ namespace ArithmeticGame
             QuestionOperator = Encoding.ASCII.GetString(data, 16, operatorLength);
             Value = BitConverter.ToInt16(data, 18);
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Converts this object to a byte array. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <returns>   This object as a byte[]. </returns>
+        ///-------------------------------------------------------------------------------------------------
 
         public byte[] ToByteArray()
         {

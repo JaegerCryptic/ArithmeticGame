@@ -1,4 +1,10 @@
-﻿using System;
+﻿///-------------------------------------------------------------------------------------------------
+// file:	InstructorConnection.cs
+//
+// summary:	Implements the instructor connection class
+///-------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,27 +16,118 @@ using System.Windows.Forms;
 
 namespace ArithmeticGame
 {
-    class InstructorConnection : InstructorForm
+    ///-------------------------------------------------------------------------------------------------
+    /// <summary>   An instructor connection. </summary>
+    ///
+    /// <remarks>   Jaege, 17/09/2018. </remarks>
+    ///-------------------------------------------------------------------------------------------------
+
+    class InstructorConnection
     {
+        /// <summary>   The client socket. </summary>
         private Socket clientSocket;
+        /// <summary>   The buffer. </summary>
         private byte[] buffer;
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the instructor question 1. </summary>
+        ///
+        /// <value> The instructor question 1. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         int instructorQuestion1 { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the instructor question 2. </summary>
+        ///
+        /// <value> The instructor question 2. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         int instructorQuestion2 { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the instructor answer. </summary>
+        ///
+        /// <value> The instructor answer. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         int instructorAnswer { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the instructor operator. </summary>
+        ///
+        /// <value> The instructor operator. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         string instructorOperator { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the question. </summary>
+        ///
+        /// <value> The question. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         string question { get; set; }
+        /// <summary>   True to toggle check. </summary>
         bool toggleCheck = true;
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the received instructor first number. </summary>
+        ///
+        /// <value> The received instructor first number. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         public int receivedInstructorFirstNumber { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the received instructor second number. </summary>
+        ///
+        /// <value> The received instructor second number. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         public int receivedInstructorSecondNumber { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the received instructor answer. </summary>
+        ///
+        /// <value> The received instructor answer. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         public int receivedInstructorAnswer { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets or sets the receiveda operator. </summary>
+        ///
+        /// <value> The receiveda operator. </value>
+        ///-------------------------------------------------------------------------------------------------
+
         public string receivedaOperator { get; set; }
+        /// <summary>   The value. </summary>
         public short Value = 0;
 
+        /// <summary>   The package. </summary>
         QuestionPackage Package = new QuestionPackage();
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///-------------------------------------------------------------------------------------------------
 
         public InstructorConnection()
         {
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="question1">    The first question. </param>
+        /// <param name="theOperator">  the operator. </param>
+        /// <param name="question2">    The second question. </param>
+        /// <param name="answer">       The answer. </param>
+        ///-------------------------------------------------------------------------------------------------
 
         public InstructorConnection(int question1, string theOperator, int question2, int answer)
         {
@@ -40,10 +137,26 @@ namespace ArithmeticGame
             instructorOperator = theOperator;
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Shows the error dialog. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="message">  The message. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         private static void ShowErrorDialog(string message)
         {
             MessageBox.Show(message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Async callback, called on completion of receive callback. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="AR">   The result of the asynchronous operation. </param>
+        ///-------------------------------------------------------------------------------------------------
 
         private void ReceiveCallback(IAsyncResult AR)
         {
@@ -74,6 +187,14 @@ namespace ArithmeticGame
             }
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Async callback, called on completion of connect callback. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="AR">   The result of the asynchronous operation. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         private void ConnectCallback(IAsyncResult AR)
         {
             try
@@ -93,6 +214,14 @@ namespace ArithmeticGame
             }
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Async callback, called on completion of send callback. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="AR">   The result of the asynchronous operation. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         private void SendCallback(IAsyncResult AR)
         {
             try
@@ -109,12 +238,28 @@ namespace ArithmeticGame
             }
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Receive question. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="question1">    The first question. </param>
+        /// <param name="question2">    The second question. </param>
+        /// <param name="answer">       The answer. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         private void ReceiveQuestion(int question1, int question2, int answer)
         {
             instructorQuestion1 = question1;
             instructorQuestion2 = question2;
             instructorAnswer = answer;
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Sends the question. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///-------------------------------------------------------------------------------------------------
 
         private void SendQuestion()
         {
@@ -138,6 +283,12 @@ namespace ArithmeticGame
             }
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Connects the question. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///-------------------------------------------------------------------------------------------------
+
         public void ConnectQuestion()
         {
             try
@@ -159,10 +310,26 @@ namespace ArithmeticGame
             }
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Toggle control state. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="toggle">   True to toggle. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         private void ToggleControlState(bool toggle)
         {
             toggleCheck = toggle;
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Updates the control state described by btn. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="btn">  The button control. </param>
+        ///-------------------------------------------------------------------------------------------------
 
         public void UpdateControlState(Button btn)
         {
@@ -170,12 +337,20 @@ namespace ArithmeticGame
             {
                 while (true)
                 {
-                    btn.Enabled = toggleCheck; 
+                    btn.Enabled = toggleCheck;
 
                     await Task.Delay(100);
                 }
             });
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets a package. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="package">  The package. </param>
+        ///-------------------------------------------------------------------------------------------------
 
         private void GetPackage(QuestionPackage package)
         {
@@ -194,13 +369,21 @@ namespace ArithmeticGame
             }
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Returns the given list. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="list"> The list to return. </param>
+        ///-------------------------------------------------------------------------------------------------
+
         public void Return(NodeList list)
         {
-                if(Value == 1)
-                {
-                    list.NodeListAddatFront(new Node(instructorAnswer));
-                    MessageBox.Show("Working...");
-                }
+            if (Value == 1)
+            {
+                list.NodeListAddatFront(new Node(instructorAnswer));
+                MessageBox.Show("Working...");
+            }
         }
 
     }

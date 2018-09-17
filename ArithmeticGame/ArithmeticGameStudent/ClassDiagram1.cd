@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ArithmeticGame.StudentForm">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAIACAAABAAABCAAAACAAAAAAEEAAAAA0AAQAA=</HashCode>
+      <FileName>StudentForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.QuestionPackage">
+    <Position X="2.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAgAAABAAAQAAAAAAgAAAAAAQ=</HashCode>
+      <FileName>QuestionPackage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.StudentConnection">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACEBEgIgAAAQABAAACQAIAIQEgBkAAAgAAA=</HashCode>
+      <FileName>StudentConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.StudentQuestion">
+    <Position X="4.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>StudentQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
