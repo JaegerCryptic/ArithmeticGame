@@ -9,134 +9,146 @@
 ///-------------------------------------------------------------------------------------------------
 
 ///-------------------------------------------------------------------------------------------------
-// file:	QuestionPackage.cs
+// file:	Node.cs
 //
-// summary:	Implements the question package class
+// summary:	Implements the node class
 ///-------------------------------------------------------------------------------------------------
 
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ArithmeticGame
 {
     ///-------------------------------------------------------------------------------------------------
-    /// <summary>   A question package. </summary>
+    /// <summary>   A node. </summary>
     ///
     /// <remarks>   Jaege, 17/09/2018. </remarks>
     ///-------------------------------------------------------------------------------------------------
-    class QuestionPackage
+
+    class Node
     {
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>   Gets or sets the question no 1. </summary>
-        ///
-        /// <value> The question no 1. </value>
-        ///-------------------------------------------------------------------------------------------------
-
-        public uint QuestionNo1 { get; set; }
-
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>   Gets or sets the question no 2. </summary>
-        ///
-        /// <value> The question no 2. </value>
-        ///-------------------------------------------------------------------------------------------------
-
-        public uint QuestionNo2 { get; set; }
-
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>   Gets or sets the question answer. </summary>
-        ///
-        /// <value> The question answer. </value>
-        ///-------------------------------------------------------------------------------------------------
-
-        public uint QuestionAnswer { get; set; }
-
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>   Gets or sets the question operator. </summary>
-        ///
-        /// <value> The question operator. </value>
-        ///-------------------------------------------------------------------------------------------------
-
-        public string QuestionOperator { get; set; }
         /// <summary>   The value. </summary>
-        public short Value;
+        public int value;
+        /// <summary>   The left. </summary>
+        public Node left;
+        /// <summary>   The right. </summary>
+        public Node right;
 
         ///-------------------------------------------------------------------------------------------------
-        /// <summary>   Default constructor. </summary>
+        /// <summary>   Gets the next. </summary>
         ///
-        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        /// <value> The next. </value>
         ///-------------------------------------------------------------------------------------------------
 
-        public QuestionPackage()
-        {
-
-        }
+        Node previous, next;
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>   Constructor. </summary>
         ///
         /// <remarks>   Jaege, 17/09/2018. </remarks>
         ///
-        /// <param name="no1">          The first no. </param>
-        /// <param name="aOperator">    The operator. </param>
-        /// <param name="no2">          The second no. </param>
-        /// <param name="answer">       The answer. </param>
+        /// <param name="myvalue">  The myvalue. </param>
         ///-------------------------------------------------------------------------------------------------
-        public QuestionPackage(int no1, string aOperator, int no2, int answer)
+
+        public Node(int myvalue)
         {
-            QuestionNo1 = Convert.ToUInt32(no1);
-            QuestionNo2 = Convert.ToUInt32(no2);
-            QuestionAnswer = Convert.ToUInt32(answer);
-            QuestionOperator = aOperator;
+            value = myvalue;
+            left = null;
+            right = null;
         }
 
         ///-------------------------------------------------------------------------------------------------
-        /// <summary>   Constructor. </summary>
+        /// <summary>   Gets my value. </summary>
         ///
         /// <remarks>   Jaege, 17/09/2018. </remarks>
         ///
-        /// <param name="data"> The data. </param>
+        /// <returns>   my value. </returns>
         ///-------------------------------------------------------------------------------------------------
 
-        public QuestionPackage(byte[] data)
+        public int GetMyValue()
         {
-            QuestionNo1 = BitConverter.ToUInt32(data, 0);
-            QuestionNo2 = BitConverter.ToUInt32(data, 4);
-            QuestionAnswer = BitConverter.ToUInt32(data, 8);
-            int operatorLength = BitConverter.ToInt32(data, 12);
-            QuestionOperator = Encoding.ASCII.GetString(data, 16, operatorLength);
-            Value = BitConverter.ToInt16(data, 18);
+            return this.value;
         }
 
         ///-------------------------------------------------------------------------------------------------
-        /// <summary>   Converts this object to a byte array. </summary>
+        /// <summary>   Sets my value. </summary>
         ///
         /// <remarks>   Jaege, 17/09/2018. </remarks>
         ///
-        /// <returns>   This object as a byte[]. </returns>
+        /// <param name="myValue">  my value. </param>
         ///-------------------------------------------------------------------------------------------------
 
-        public byte[] ToByteArray()
+        public void SetMyValue(int myValue)
         {
-            List<byte> byteList = new List<byte>();
-            byteList.AddRange(BitConverter.GetBytes(QuestionNo1));
-            byteList.AddRange(BitConverter.GetBytes(QuestionNo2));
-            byteList.AddRange(BitConverter.GetBytes(QuestionAnswer));
-            byteList.AddRange(BitConverter.GetBytes(QuestionOperator.Length));
-            byteList.AddRange(Encoding.ASCII.GetBytes(QuestionOperator));
-            byteList.AddRange(BitConverter.GetBytes(Value));
-
-            return byteList.ToArray();
+            value = myValue;
         }
 
-        public static byte[] JsonStringToByteArray(string jsonString)
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Sets a next. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="aNode">    The node. </param>
+        ///-------------------------------------------------------------------------------------------------
+
+        public void SetNext(Node aNode)
         {
-            var encoding = new UTF8Encoding();
-            return encoding.GetBytes(jsonString.Substring(1, jsonString.Length - 2));
+            this.next = aNode;
+        }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets the next item. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <returns>   The next. </returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        public Node GetNext()
+        {
+            return this.next;
+        }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Sets the previous. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <param name="aNode">    The node. </param>
+        ///-------------------------------------------------------------------------------------------------
+
+        public void SetPrevious(Node aNode)
+        {
+            this.previous = aNode;
+        }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Gets the previous item. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <returns>   The previous. </returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        public Node GetPrevious()
+        {
+            return this.previous;
+        }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>   Convert this object into a string representation. </summary>
+        ///
+        /// <remarks>   Jaege, 17/09/2018. </remarks>
+        ///
+        /// <returns>   A string that represents this object. </returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        public string ToString()
+        {
+            return value.ToString();
         }
 
     }

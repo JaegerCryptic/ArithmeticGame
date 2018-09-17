@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ArithmeticGame.InstructorForm">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8AAAIAIAOiAggTgA0AiCAQAaCCAEAAClAAQAAURAEMI=</HashCode>
+      <FileName>InstructorForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.InstructorQuestion">
+    <Position X="2.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABQQBAABCAAAAgAAACAQAAIgAAAAIAAAAAgAAAIAQ=</HashCode>
+      <FileName>InstructorQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.InstructorConnection">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAEQAAEBEgIAAIEQAFAIAAQAIAIQAgBkEAAgAAA=</HashCode>
+      <FileName>InstructorConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.Node">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAIAAEAAIAAQAAAAAoACIAAAAAAgIAgAA=</HashCode>
+      <FileName>Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.NodeList">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAABABQHAABAAAAAAAAAAABAAAAAEAAAQA=</HashCode>
+      <FileName>NodeList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.QuestionPackage">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAgAAABAAAQAAAAAAgAAAAAAQ=</HashCode>
+      <FileName>QuestionPackage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.QuestionsArrayList">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAQUAAAAgAAIIAAAIAAAAAAAMAABAAAAAA=</HashCode>
+      <FileName>QuestionsArrayList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArithmeticGame.Tree">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAACAEAAAAAAAEAAAAgAAAABAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Tree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

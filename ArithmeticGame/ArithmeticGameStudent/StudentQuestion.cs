@@ -9,27 +9,20 @@ namespace ArithmeticGame
 {
     class StudentQuestion
     {
-        //string studentQuestion = MyQuestion.Question.instructorFirstNumber.ToString() + " " + MyQuestion.Question.aOperator
-        //    + " " + MyQuestion.Question.instructorSecondNumber.ToString() + " =";
 
         public StudentQuestion()
         {
 
         }
 
-        public StudentQuestion(TextBox question)
-        {
-            //question.Text = studentQuestion;
-        }
-
-        public void CheckAnswer(TextBox answer)
+        public void CheckAnswer(TextBox answer, int instructorAnswer, StudentConnection question)
         {
             if (!String.IsNullOrEmpty(answer.Text))
             {
                 int tempFirstNumber;
                 if (int.TryParse(answer.Text, out tempFirstNumber))
                 {
-                    ValidateAnswer(tempFirstNumber);
+                    ValidateAnswer(tempFirstNumber, instructorAnswer, question);
                 }
                 else
                 {
@@ -39,19 +32,27 @@ namespace ArithmeticGame
             }
         }
 
-        public void ValidateAnswer(int answer)
+        public void ValidateAnswer(int studentAnswer, int answer, StudentConnection Question)
         {
-            //////if(answer == MyQuestion.Question.instructorAnswer)
-            //{
-            //    MessageBox.Show("This answer is correct. Well done!", "Correct!",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("This answer is incorrect. Try again.", "Incorrect",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-        }
+            if (studentAnswer == answer)
+            {
+                MessageBox.Show("This answer is correct.", "Correct!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Question.SendQuestion();
+                Question.Value = 0;
+            }
+            else
+            {
+                MessageBox.Show("This answer is incorrect.", "Incorrect",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Question.Value = 1;
 
+                Task.Run(async () =>
+                {
+                    await Task.Delay(100);
+                    Question.SendQuestion();
+                }); 
+            }
+        }
     }
 }

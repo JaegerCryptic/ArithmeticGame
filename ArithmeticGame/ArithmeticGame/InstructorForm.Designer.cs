@@ -49,6 +49,20 @@
             this.btnSort1 = new System.Windows.Forms.Button();
             this.btnSort2 = new System.Windows.Forms.Button();
             this.btnSort3 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnDisplayLinkList = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnDisplayPreOrder = new System.Windows.Forms.Button();
+            this.btnSavePreOrder = new System.Windows.Forms.Button();
+            this.btnDisplayInOrder = new System.Windows.Forms.Button();
+            this.btnSaveInOrder = new System.Windows.Forms.Button();
+            this.btnDisplayPostOrder = new System.Windows.Forms.Button();
+            this.btnSavePostOrder = new System.Windows.Forms.Button();
+            this.txtBinaryTree = new System.Windows.Forms.TextBox();
+            this.txtLinkedList = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridArray)).BeginInit();
             this.SuspendLayout();
@@ -219,7 +233,7 @@
             // 
             this.dataGridArray.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridArray.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridArray.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridArray.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataGridArray.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridArray.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridArray.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -272,6 +286,7 @@
             this.btnSort2.TabIndex = 13;
             this.btnSort2.Text = "2";
             this.btnSort2.UseVisualStyleBackColor = true;
+            this.btnSort2.Click += new System.EventHandler(this.btnSort2_Click);
             // 
             // btnSort3
             // 
@@ -281,6 +296,150 @@
             this.btnSort3.TabIndex = 14;
             this.btnSort3.Text = "3";
             this.btnSort3.UseVisualStyleBackColor = true;
+            this.btnSort3.Click += new System.EventHandler(this.btnSort3_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label9.Location = new System.Drawing.Point(8, 281);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(307, 16);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Linked List (of all incorrectly answered excercises):";
+            // 
+            // btnDisplayLinkList
+            // 
+            this.btnDisplayLinkList.Location = new System.Drawing.Point(526, 356);
+            this.btnDisplayLinkList.Name = "btnDisplayLinkList";
+            this.btnDisplayLinkList.Size = new System.Drawing.Size(75, 23);
+            this.btnDisplayLinkList.TabIndex = 17;
+            this.btnDisplayLinkList.Text = "Display";
+            this.btnDisplayLinkList.UseVisualStyleBackColor = true;
+            this.btnDisplayLinkList.Click += new System.EventHandler(this.btnDisplayLinkList_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label10.Location = new System.Drawing.Point(12, 395);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(401, 16);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Binary Tree (of all questions - added in the order they were asked):";
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label11.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label11.Location = new System.Drawing.Point(8, 473);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(92, 24);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Pre-Order";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label12.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label12.Location = new System.Drawing.Point(253, 473);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(92, 24);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "In-Order";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label13.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label13.Location = new System.Drawing.Point(510, 473);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(92, 24);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Post-Order";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnDisplayPreOrder
+            // 
+            this.btnDisplayPreOrder.Location = new System.Drawing.Point(7, 497);
+            this.btnDisplayPreOrder.Name = "btnDisplayPreOrder";
+            this.btnDisplayPreOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnDisplayPreOrder.TabIndex = 23;
+            this.btnDisplayPreOrder.Text = "Display";
+            this.btnDisplayPreOrder.UseVisualStyleBackColor = true;
+            this.btnDisplayPreOrder.Click += new System.EventHandler(this.btnDisplayPreOrder_Click);
+            // 
+            // btnSavePreOrder
+            // 
+            this.btnSavePreOrder.Location = new System.Drawing.Point(52, 497);
+            this.btnSavePreOrder.Name = "btnSavePreOrder";
+            this.btnSavePreOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnSavePreOrder.TabIndex = 24;
+            this.btnSavePreOrder.Text = "Save";
+            this.btnSavePreOrder.UseVisualStyleBackColor = true;
+            // 
+            // btnDisplayInOrder
+            // 
+            this.btnDisplayInOrder.Location = new System.Drawing.Point(252, 497);
+            this.btnDisplayInOrder.Name = "btnDisplayInOrder";
+            this.btnDisplayInOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnDisplayInOrder.TabIndex = 25;
+            this.btnDisplayInOrder.Text = "Display";
+            this.btnDisplayInOrder.UseVisualStyleBackColor = true;
+            this.btnDisplayInOrder.Click += new System.EventHandler(this.btnDisplayInOrder_Click);
+            // 
+            // btnSaveInOrder
+            // 
+            this.btnSaveInOrder.Location = new System.Drawing.Point(297, 497);
+            this.btnSaveInOrder.Name = "btnSaveInOrder";
+            this.btnSaveInOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnSaveInOrder.TabIndex = 26;
+            this.btnSaveInOrder.Text = "Save";
+            this.btnSaveInOrder.UseVisualStyleBackColor = true;
+            // 
+            // btnDisplayPostOrder
+            // 
+            this.btnDisplayPostOrder.Location = new System.Drawing.Point(509, 497);
+            this.btnDisplayPostOrder.Name = "btnDisplayPostOrder";
+            this.btnDisplayPostOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnDisplayPostOrder.TabIndex = 27;
+            this.btnDisplayPostOrder.Text = "Display";
+            this.btnDisplayPostOrder.UseVisualStyleBackColor = true;
+            this.btnDisplayPostOrder.Click += new System.EventHandler(this.btnDisplayPostOrder_Click);
+            // 
+            // btnSavePostOrder
+            // 
+            this.btnSavePostOrder.Location = new System.Drawing.Point(554, 497);
+            this.btnSavePostOrder.Name = "btnSavePostOrder";
+            this.btnSavePostOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnSavePostOrder.TabIndex = 28;
+            this.btnSavePostOrder.Text = "Save";
+            this.btnSavePostOrder.UseVisualStyleBackColor = true;
+            // 
+            // txtBinaryTree
+            // 
+            this.txtBinaryTree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBinaryTree.Location = new System.Drawing.Point(11, 414);
+            this.txtBinaryTree.Multiline = true;
+            this.txtBinaryTree.Name = "txtBinaryTree";
+            this.txtBinaryTree.Size = new System.Drawing.Size(591, 53);
+            this.txtBinaryTree.TabIndex = 9;
+            // 
+            // txtLinkedList
+            // 
+            this.txtLinkedList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLinkedList.Location = new System.Drawing.Point(11, 300);
+            this.txtLinkedList.Multiline = true;
+            this.txtLinkedList.Name = "txtLinkedList";
+            this.txtLinkedList.Size = new System.Drawing.Size(591, 53);
+            this.txtLinkedList.TabIndex = 29;
             // 
             // InstructorForm
             // 
@@ -288,7 +447,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(614, 450);
+            this.ClientSize = new System.Drawing.Size(614, 528);
+            this.Controls.Add(this.txtLinkedList);
+            this.Controls.Add(this.txtBinaryTree);
+            this.Controls.Add(this.btnSavePostOrder);
+            this.Controls.Add(this.btnDisplayPostOrder);
+            this.Controls.Add(this.btnSaveInOrder);
+            this.Controls.Add(this.btnDisplayInOrder);
+            this.Controls.Add(this.btnSavePreOrder);
+            this.Controls.Add(this.btnDisplayPreOrder);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.btnDisplayLinkList);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnSort3);
             this.Controls.Add(this.btnSort2);
             this.Controls.Add(this.btnSort1);
@@ -330,6 +503,20 @@
         private System.Windows.Forms.Button btnSort1;
         private System.Windows.Forms.Button btnSort2;
         private System.Windows.Forms.Button btnSort3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnDisplayLinkList;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnDisplayPreOrder;
+        private System.Windows.Forms.Button btnSavePreOrder;
+        private System.Windows.Forms.Button btnDisplayInOrder;
+        private System.Windows.Forms.Button btnSaveInOrder;
+        private System.Windows.Forms.Button btnDisplayPostOrder;
+        private System.Windows.Forms.Button btnSavePostOrder;
+        private System.Windows.Forms.TextBox txtBinaryTree;
+        private System.Windows.Forms.TextBox txtLinkedList;
     }
 }
 
