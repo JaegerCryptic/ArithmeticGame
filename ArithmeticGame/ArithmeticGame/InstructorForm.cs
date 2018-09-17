@@ -23,13 +23,10 @@ namespace ArithmeticGame
         Node Root;
         NodeList MyLinkedList = null;
 
-        InstructorConnection Package = new InstructorConnection();
-
         public InstructorForm()
         {
             InitializeComponent();
             MyLinkedList = new NodeList();
-
         }
 
         private void txtFirstNumber_TextChanged(object sender, EventArgs e)
@@ -51,7 +48,7 @@ namespace ArithmeticGame
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            Package = new InstructorConnection(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber,
+            InstructorConnection Package = new InstructorConnection(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber,
                 Question.instructorAnswer);
 
             Package.ConnectQuestion();

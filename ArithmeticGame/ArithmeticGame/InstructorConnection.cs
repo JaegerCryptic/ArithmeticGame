@@ -20,7 +20,12 @@ namespace ArithmeticGame
         string instructorOperator { get; set; }
         string question { get; set; }
         bool toggleCheck = true;
+        public int receivedInstructorFirstNumber { get; set; }
+        public int receivedInstructorSecondNumber { get; set; }
+        public int receivedInstructorAnswer { get; set; }
+        public string receivedaOperator { get; set; }
         public short Value = 0;
+
         QuestionPackage Package = new QuestionPackage();
 
         public InstructorConnection()
@@ -174,29 +179,28 @@ namespace ArithmeticGame
 
         private void GetPackage(QuestionPackage package)
         {
-            instructorQuestion1 = Convert.ToInt32(package.QuestionNo1);
-            instructorOperator = package.QuestionOperator.ToString();
-            instructorQuestion2 = Convert.ToInt32(package.QuestionNo2);
-            instructorAnswer = Convert.ToInt32(package.QuestionAnswer);
+            receivedInstructorFirstNumber = Convert.ToInt32(package.QuestionNo1);
+            receivedaOperator = package.QuestionOperator.ToString();
+            receivedInstructorSecondNumber = Convert.ToInt32(package.QuestionNo2);
+            receivedInstructorAnswer = Convert.ToInt32(package.QuestionAnswer);
             Value = Convert.ToInt16(package.Value);
             question = package.QuestionNo1.ToString() + " " + package.QuestionOperator.ToString() + " "
                + package.QuestionNo2.ToString() + " " + "=";
+            MessageBox.Show(receivedInstructorAnswer.ToString());
+
+            if (receivedaOperator != null)
+            {
+                ToggleControlState(true);
+            }
         }
 
         public void Return(NodeList list)
         {
-            Task.Run(async () =>
-            {
-                while (true)
+                if(Value == 1)
                 {
-                    if (Value == 1)
-                    {
-                        list.NodeListAddatFront(new Node(instructorAnswer));
-                    }
-
-                    await Task.Delay(100);
+                    list.NodeListAddatFront(new Node(instructorAnswer));
+                    MessageBox.Show("Working...");
                 }
-            });
         }
 
     }

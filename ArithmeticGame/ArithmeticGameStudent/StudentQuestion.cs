@@ -39,6 +39,7 @@ namespace ArithmeticGame
                 MessageBox.Show("This answer is correct.", "Correct!",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Question.SendQuestion();
+                Question.Value = 0;
             }
             else
             {

@@ -16,7 +16,7 @@ namespace ArithmeticGame
         public bool checkNo1 = false;
         public bool checkNo2 = false;
         public string equals { get; set; }
-
+      
         public InstructorQuestion()
         {
 
