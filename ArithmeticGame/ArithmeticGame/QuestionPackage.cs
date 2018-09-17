@@ -13,6 +13,7 @@ namespace ArithmeticGame
         public uint QuestionNo2 { get; set; }
         public uint QuestionAnswer { get; set; }
         public string QuestionOperator { get; set; }
+        public short Value;
 
         public QuestionPackage()
         {
@@ -34,6 +35,7 @@ namespace ArithmeticGame
             QuestionAnswer = BitConverter.ToUInt32(data, 8);
             int operatorLength = BitConverter.ToInt32(data, 12);
             QuestionOperator = Encoding.ASCII.GetString(data, 16, operatorLength);
+            Value = BitConverter.ToInt16(data, 18);
         }
 
         public byte[] ToByteArray()
@@ -44,6 +46,7 @@ namespace ArithmeticGame
             byteList.AddRange(BitConverter.GetBytes(QuestionAnswer));
             byteList.AddRange(BitConverter.GetBytes(QuestionOperator.Length));
             byteList.AddRange(Encoding.ASCII.GetBytes(QuestionOperator));
+            byteList.AddRange(BitConverter.GetBytes(Value));
 
             return byteList.ToArray();
         }

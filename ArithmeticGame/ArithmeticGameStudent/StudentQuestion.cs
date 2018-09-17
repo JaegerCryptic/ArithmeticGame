@@ -44,9 +44,14 @@ namespace ArithmeticGame
             {
                 MessageBox.Show("This answer is incorrect.", "Incorrect",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Question.SendQuestion();
+                Question.Value = 1;
+
+                Task.Run(async () =>
+                {
+                    await Task.Delay(100);
+                    Question.SendQuestion();
+                }); 
             }
         }
-
     }
 }

@@ -18,8 +18,14 @@ namespace ArithmeticGame
         int instructorQuestion2 { get; set; }
         int instructorAnswer { get; set; }
         string instructorOperator { get; set; }
+        string question { get; set; }
         bool toggleCheck = true;
+        public short Value = 0;
         QuestionPackage Package = new QuestionPackage();
+
+        public InstructorConnection()
+        {
+        }
 
         public InstructorConnection(int question1, string theOperator, int question2, int answer)
         {
@@ -172,6 +178,26 @@ namespace ArithmeticGame
             instructorOperator = package.QuestionOperator.ToString();
             instructorQuestion2 = Convert.ToInt32(package.QuestionNo2);
             instructorAnswer = Convert.ToInt32(package.QuestionAnswer);
+            Value = Convert.ToInt16(package.Value);
+            question = package.QuestionNo1.ToString() + " " + package.QuestionOperator.ToString() + " "
+               + package.QuestionNo2.ToString() + " " + "=";
         }
+
+        public void Return(NodeList list)
+        {
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    if (Value == 1)
+                    {
+                        list.NodeListAddatFront(new Node(instructorAnswer));
+                    }
+
+                    await Task.Delay(100);
+                }
+            });
+        }
+
     }
 }

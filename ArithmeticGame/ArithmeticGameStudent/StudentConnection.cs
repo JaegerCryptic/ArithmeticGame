@@ -17,6 +17,7 @@ namespace ArithmeticGame
         public int instructorAnswer { get; set; }
         string instructorOperator { get; set; }
         private bool toggleCheck = false;
+        public short Value; 
 
         private Socket serverSocket;
         private Socket clientSocket;
@@ -137,6 +138,7 @@ namespace ArithmeticGame
             instructorOperator = package.QuestionOperator.ToString();
             instructorQuestion2 = Convert.ToInt32(package.QuestionNo2);
             instructorAnswer = Convert.ToInt32(package.QuestionAnswer);
+            Value = Convert.ToInt16(package.Value);
 
         }
 

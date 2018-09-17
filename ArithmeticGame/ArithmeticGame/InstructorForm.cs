@@ -20,11 +20,16 @@ namespace ArithmeticGame
         ArrayList QuestionList = new ArrayList();
         Hashtable QuestionTable = new Hashtable();
         Tree BinaryTree = new Tree();
-        Node root;
+        Node Root;
+        NodeList MyLinkedList = null;
+
+        InstructorConnection Package = new InstructorConnection();
 
         public InstructorForm()
         {
             InitializeComponent();
+            MyLinkedList = new NodeList();
+
         }
 
         private void txtFirstNumber_TextChanged(object sender, EventArgs e)
@@ -46,7 +51,7 @@ namespace ArithmeticGame
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            InstructorConnection Package = new InstructorConnection(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber,
+            Package = new InstructorConnection(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber,
                 Question.instructorAnswer);
 
             Package.ConnectQuestion();
@@ -59,10 +64,10 @@ namespace ArithmeticGame
             List.GetHashTable(QuestionTable, QuestionList);
 
             BinaryTree.AddRecursive(Question.instructorAnswer);
-            root = BinaryTree.SetRoot(BinaryTree);
+            Root = BinaryTree.SetRoot(BinaryTree);
 
             Package.UpdateControlState(btnSend);
-
+            Package.Return(MyLinkedList);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -89,8 +94,8 @@ namespace ArithmeticGame
         {
             string treeToString = "IN-ORDER: ";
 
-            BinaryTree.InOrder(root);
-            BinaryTree.DisplayTree(root, ref treeToString);
+            BinaryTree.InOrder(Root);
+            BinaryTree.DisplayTree(Root, ref treeToString);
             txtBinaryTree.Text = treeToString;
         }
 
@@ -98,8 +103,8 @@ namespace ArithmeticGame
         {
             string treeToString = "PRE-ORDER: ";
 
-            BinaryTree.PreOrder(root);
-            BinaryTree.DisplayTree(root, ref treeToString);
+            BinaryTree.PreOrder(Root);
+            BinaryTree.DisplayTree(Root, ref treeToString);
             txtBinaryTree.Text = treeToString;
         }
 
@@ -107,9 +112,14 @@ namespace ArithmeticGame
         {
             string treeToString = "POST-ORDER: ";
 
-            BinaryTree.PostOrder(root);
-            BinaryTree.DisplayTree(root, ref treeToString);
+            BinaryTree.PostOrder(Root);
+            BinaryTree.DisplayTree(Root, ref treeToString);
             txtBinaryTree.Text = treeToString;
+        }
+
+        private void btnDisplayLinkList_Click(object sender, EventArgs e)
+        {
+            MyLinkedList.DisplayNodeList(MyLinkedList, txtLinkedList);
         }
     }
 }
