@@ -1,4 +1,14 @@
 ﻿///-------------------------------------------------------------------------------------------------
+///	Author: Kyle Kent
+/// 
+/// Student Number: 465510139
+///	
+/// Purpose: Arithmetic Game
+/// 
+/// Version Control: GitHub
+///-------------------------------------------------------------------------------------------------
+
+///-------------------------------------------------------------------------------------------------
 // file:	QuestionPackage.cs
 //
 // summary:	Implements the question package class
@@ -122,6 +132,12 @@ namespace ArithmeticGame
             byteList.AddRange(BitConverter.GetBytes(Value));
 
             return byteList.ToArray();
+        }
+
+        public static byte[] JsonStringToByteArray(string jsonString)
+        {
+            var encoding = new UTF8Encoding();
+            return encoding.GetBytes(jsonString.Substring(1, jsonString.Length - 2));
         }
 
     }

@@ -1,9 +1,21 @@
 ﻿///-------------------------------------------------------------------------------------------------
+///	Author: Kyle Kent
+/// 
+/// Student Number: 465510139
+///	
+/// Purpose: Arithmetic Game
+/// 
+/// Version Control: GitHub
+///-------------------------------------------------------------------------------------------------
+
+
+///-------------------------------------------------------------------------------------------------
 // file:	InstructorConnection.cs
 //
 // summary:	Implements the instructor connection class
 ///-------------------------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -265,8 +277,9 @@ namespace ArithmeticGame
         {
             try
             {
-                // Serialize the textBoxes text before sending.
+                // Serialize the values before sending.
                 QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer);
+
                 byte[] buffer = package.ToByteArray();
                 clientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallback, null);
                 ToggleControlState(false);
@@ -361,8 +374,8 @@ namespace ArithmeticGame
             Value = Convert.ToInt16(package.Value);
             question = package.QuestionNo1.ToString() + " " + package.QuestionOperator.ToString() + " "
                + package.QuestionNo2.ToString() + " " + "=";
-            MessageBox.Show(receivedInstructorAnswer.ToString());
 
+            
             if (receivedaOperator != null)
             {
                 ToggleControlState(true);
@@ -382,7 +395,6 @@ namespace ArithmeticGame
             if (Value == 1)
             {
                 list.NodeListAddatFront(new Node(instructorAnswer));
-                MessageBox.Show("Working...");
             }
         }
 
