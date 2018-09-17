@@ -14,6 +14,7 @@
 // summary:	Implements the question package class
 ///-------------------------------------------------------------------------------------------------
 
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,6 @@ namespace ArithmeticGame
     ///
     /// <remarks>   Jaege, 17/09/2018. </remarks>
     ///-------------------------------------------------------------------------------------------------
-
     class QuestionPackage
     {
         ///-------------------------------------------------------------------------------------------------
@@ -86,7 +86,6 @@ namespace ArithmeticGame
         /// <param name="no2">          The second no. </param>
         /// <param name="answer">       The answer. </param>
         ///-------------------------------------------------------------------------------------------------
-
         public QuestionPackage(int no1, string aOperator, int no2, int answer)
         {
             QuestionNo1 = Convert.ToUInt32(no1);

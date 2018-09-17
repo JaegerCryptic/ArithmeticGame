@@ -14,6 +14,7 @@
 // summary:	Implements the instructor Windows Form
 ///-------------------------------------------------------------------------------------------------
 
+using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,17 +27,17 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace ArithmeticGame
 {
     ///-------------------------------------------------------------------------------------------------
-    /// <summary>   Form for viewing the instructor. </summary>
     ///
     /// <remarks>   Jaege, 17/09/2018. </remarks>
     ///-------------------------------------------------------------------------------------------------
-
+    [TestFixture]
     public partial class InstructorForm : Form
     {
+     
+        
         /// <summary>   The question. </summary>
         InstructorQuestion Question = new InstructorQuestion();
         /// <summary>   The list. </summary>
@@ -116,7 +117,7 @@ namespace ArithmeticGame
         /// <param name="sender">   Source of the event. </param>
         /// <param name="e">        Event information. </param>
         ///-------------------------------------------------------------------------------------------------
-
+        [TestCase]
         private void btnSend_Click(object sender, EventArgs e)
         {
             InstructorConnection Package = new InstructorConnection(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber,

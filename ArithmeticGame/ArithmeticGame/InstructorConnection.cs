@@ -33,7 +33,6 @@ namespace ArithmeticGame
     ///
     /// <remarks>   Jaege, 17/09/2018. </remarks>
     ///-------------------------------------------------------------------------------------------------
-
     class InstructorConnection
     {
         /// <summary>   The client socket. </summary>
