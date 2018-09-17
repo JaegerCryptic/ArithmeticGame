@@ -277,7 +277,7 @@ namespace ArithmeticGame
             try
             {
                 // Serialize the values before sending.
-                QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer);
+                QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer, Value);
 
                 byte[] buffer = package.ToByteArray();
                 clientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallback, null);
@@ -373,7 +373,7 @@ namespace ArithmeticGame
             Value = Convert.ToInt16(package.Value);
             question = package.QuestionNo1.ToString() + " " + package.QuestionOperator.ToString() + " "
                + package.QuestionNo2.ToString() + " " + "=";
-
+            MessageBox.Show(Value.ToString());
             
             if (receivedaOperator != null)
             {
@@ -394,6 +394,11 @@ namespace ArithmeticGame
             if (Value == 1)
             {
                 list.NodeListAddatFront(new Node(instructorAnswer));
+                MessageBox.Show("Working..");
+            }
+            else
+            {
+                MessageBox.Show("Not working..");
             }
         }
 

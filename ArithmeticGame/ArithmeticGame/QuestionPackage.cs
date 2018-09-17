@@ -86,12 +86,13 @@ namespace ArithmeticGame
         /// <param name="no2">          The second no. </param>
         /// <param name="answer">       The answer. </param>
         ///-------------------------------------------------------------------------------------------------
-        public QuestionPackage(int no1, string aOperator, int no2, int answer)
+        public QuestionPackage(int no1, string aOperator, int no2, int answer, short value)
         {
             QuestionNo1 = Convert.ToUInt32(no1);
             QuestionNo2 = Convert.ToUInt32(no2);
             QuestionAnswer = Convert.ToUInt32(answer);
             QuestionOperator = aOperator;
+            Value = value;
         }
 
         ///-------------------------------------------------------------------------------------------------

@@ -139,7 +139,13 @@ namespace ArithmeticGame
             instructorQuestion2 = Convert.ToInt32(package.QuestionNo2);
             instructorAnswer = Convert.ToInt32(package.QuestionAnswer);
             Value = Convert.ToInt16(package.Value);
+            MessageBox.Show(Value.ToString());
 
+        }
+
+        public void GetValue(short value)
+        {
+            Value = value;
         }
 
         public void SetPackageAsync(TextBox txt)
@@ -159,7 +165,7 @@ namespace ArithmeticGame
             try
             {
                 // Serialize the textBoxes text before sending.
-                QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer);
+                QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer, Value);
                 byte[] buffer = package.ToByteArray();
                 clientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallback, null);
                 ToggleControlState(false);

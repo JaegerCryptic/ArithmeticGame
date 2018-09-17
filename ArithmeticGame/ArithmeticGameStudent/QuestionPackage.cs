@@ -12,19 +12,20 @@ namespace ArithmeticGame
         public uint QuestionNo2 { get; set; }
         public uint QuestionAnswer { get; set; }
         public string QuestionOperator { get; set; }
-        public short Value;
+        public short Value = 0;
 
         public QuestionPackage()
         {
 
         }
 
-        public QuestionPackage(int no1, string aOperator, int no2, int answer)
+        public QuestionPackage(int no1, string aOperator, int no2, int answer, short value)
         {
             QuestionNo1 = Convert.ToUInt32(no1);
             QuestionNo2 = Convert.ToUInt32(no2);
             QuestionAnswer = Convert.ToUInt32(answer);
             QuestionOperator = aOperator;
+            Value = value;
         }
 
         public QuestionPackage(byte[] data)
