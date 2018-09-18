@@ -37,6 +37,10 @@ namespace ArithmeticGame
         /// <summary>   The right. </summary>
         public Node right;
 
+        public int NodeValue { get; set; }
+        public Node PreviousLink { get; set; }
+        public Node NextLink { get; set; }
+
         ///-------------------------------------------------------------------------------------------------
         /// <summary>   Gets the next. </summary>
         ///

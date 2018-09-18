@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ArithmeticGame
 {
@@ -12,14 +13,14 @@ namespace ArithmeticGame
         public uint QuestionNo2 { get; set; }
         public uint QuestionAnswer { get; set; }
         public string QuestionOperator { get; set; }
-        public short Value = 0;
+        public int Value { get; set; }
 
         public QuestionPackage()
         {
 
         }
 
-        public QuestionPackage(int no1, string aOperator, int no2, int answer, short value)
+        public QuestionPackage(int no1, string aOperator, int no2, int answer, int value)
         {
             QuestionNo1 = Convert.ToUInt32(no1);
             QuestionNo2 = Convert.ToUInt32(no2);
@@ -35,7 +36,7 @@ namespace ArithmeticGame
             QuestionAnswer = BitConverter.ToUInt32(data, 8);
             int operatorLength = BitConverter.ToInt32(data, 12);
             QuestionOperator = Encoding.ASCII.GetString(data, 16, operatorLength);
-            Value = BitConverter.ToInt16(data, 18);
+            Value = BitConverter.ToInt32(data, 20);
         }
 
         public byte[] ToByteArray()

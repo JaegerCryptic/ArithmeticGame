@@ -117,7 +117,7 @@ namespace ArithmeticGame
         /// <param name="sender">   Source of the event. </param>
         /// <param name="e">        Event information. </param>
         ///-------------------------------------------------------------------------------------------------
-        [TestCase]
+        
         private void btnSend_Click(object sender, EventArgs e)
         {
             InstructorConnection Package = new InstructorConnection(Question.instructorFirstNumber, Question.aOperator, Question.instructorSecondNumber,
@@ -136,7 +136,7 @@ namespace ArithmeticGame
             Root = BinaryTree.SetRoot(BinaryTree);
 
             Package.UpdateControlState(btnSend);
-            Package.Return(MyLinkedList);
+            MyLinkedList.NodeListAddatFront(new Node(Question.instructorAnswer));
         }
 
         ///-------------------------------------------------------------------------------------------------

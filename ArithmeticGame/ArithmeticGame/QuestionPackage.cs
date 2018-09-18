@@ -63,7 +63,7 @@ namespace ArithmeticGame
 
         public string QuestionOperator { get; set; }
         /// <summary>   The value. </summary>
-        public short Value;
+        public int Value { get; set; }
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>   Default constructor. </summary>
@@ -86,7 +86,7 @@ namespace ArithmeticGame
         /// <param name="no2">          The second no. </param>
         /// <param name="answer">       The answer. </param>
         ///-------------------------------------------------------------------------------------------------
-        public QuestionPackage(int no1, string aOperator, int no2, int answer, short value)
+        public QuestionPackage(int no1, string aOperator, int no2, int answer, int value)
         {
             QuestionNo1 = Convert.ToUInt32(no1);
             QuestionNo2 = Convert.ToUInt32(no2);
@@ -110,7 +110,7 @@ namespace ArithmeticGame
             QuestionAnswer = BitConverter.ToUInt32(data, 8);
             int operatorLength = BitConverter.ToInt32(data, 12);
             QuestionOperator = Encoding.ASCII.GetString(data, 16, operatorLength);
-            Value = BitConverter.ToInt16(data, 18);
+            Value = BitConverter.ToInt16(data, 20);
         }
 
         ///-------------------------------------------------------------------------------------------------
@@ -133,12 +133,5 @@ namespace ArithmeticGame
 
             return byteList.ToArray();
         }
-
-        public static byte[] JsonStringToByteArray(string jsonString)
-        {
-            var encoding = new UTF8Encoding();
-            return encoding.GetBytes(jsonString.Substring(1, jsonString.Length - 2));
-        }
-
     }
 }

@@ -114,7 +114,7 @@ namespace ArithmeticGame
 
         public string receivedaOperator { get; set; }
         /// <summary>   The value. </summary>
-        public short Value = 0;
+        public int Value { get; set; }
 
         /// <summary>   The package. </summary>
         QuestionPackage Package = new QuestionPackage();
@@ -182,6 +182,8 @@ namespace ArithmeticGame
 
                 // The received data is deserialized in the PersonPackage ctor.
                 Package = new QuestionPackage(buffer);
+                Package.Value = 1;
+                MessageBox.Show(Package.Value.ToString());
                 GetPackage(Package);
 
                 // Start receiving data again.
@@ -210,7 +212,7 @@ namespace ArithmeticGame
             try
             {
                 clientSocket.EndConnect(AR);
-                ToggleControlState(true);
+               // ToggleControlState(true);
                 buffer = new byte[clientSocket.ReceiveBufferSize];
                 clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
             }
@@ -277,10 +279,9 @@ namespace ArithmeticGame
             {
                 // Serialize the values before sending.
                 QuestionPackage package = new QuestionPackage(instructorQuestion1, instructorOperator, instructorQuestion2, instructorAnswer, Value);
-
                 byte[] buffer = package.ToByteArray();
                 clientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallback, null);
-                ToggleControlState(false);
+                //ToggleControlState(false);
             }
             catch (SocketException ex)
             {
@@ -293,7 +294,6 @@ namespace ArithmeticGame
                 ToggleControlState(false);
             }
         }
-
         ///-------------------------------------------------------------------------------------------------
         /// <summary>   Connects the question. </summary>
         ///
@@ -308,7 +308,6 @@ namespace ArithmeticGame
                 // Connect to the specified host.
                 var endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3333);
                 clientSocket.BeginConnect(endPoint, ConnectCallback, null);
-
                 SendQuestion();
             }
             catch (SocketException ex)
@@ -369,15 +368,13 @@ namespace ArithmeticGame
             receivedaOperator = package.QuestionOperator.ToString();
             receivedInstructorSecondNumber = Convert.ToInt32(package.QuestionNo2);
             receivedInstructorAnswer = Convert.ToInt32(package.QuestionAnswer);
-            Value = Convert.ToInt16(package.Value);
             question = package.QuestionNo1.ToString() + " " + package.QuestionOperator.ToString() + " "
                + package.QuestionNo2.ToString() + " " + "=";
-            MessageBox.Show(package.Value.ToString());
-            Value = 1;
-            
+            Value = package.Value;
+
             if (receivedaOperator != null)
             {
-                ToggleControlState(true);
+                //ToggleControlState(true);
             }
         }
 
@@ -391,22 +388,7 @@ namespace ArithmeticGame
 
         public void Return(NodeList list)
         {
-            Task.Run(async () =>
-            {
-                while (true)
-                {
-                    if (Value == 1)
-                    {
-                        list.NodeListAddatFront(new Node(instructorAnswer));
-                    }
-                    else
-                    {
-                        await Task.Delay(300);
-                    }
-
-                   
-                }
-            });
+           list.NodeListAddatFront(new Node(instructorAnswer));
         }
 
     }

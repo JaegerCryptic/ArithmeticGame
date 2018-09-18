@@ -131,10 +131,12 @@ namespace ArithmeticGame
         /// <param name="aNode">    The node. </param>
         ///-------------------------------------------------------------------------------------------------
 
+
         public void NodeListAddatFront(Node aNode)
         {
-            if((HeadNode == null)&&(CurrentNode == null)&& (TailNode == null))
+            if ((HeadNode == null) && (CurrentNode == null) && (TailNode == null))
             {
+                // this firstNode in the list
                 HeadNode = aNode;
                 CurrentNode = aNode;
                 TailNode = aNode;
@@ -161,39 +163,20 @@ namespace ArithmeticGame
 
         public void DisplayNodeList(NodeList list, TextBox txt)
         {
-            if (list.GetCurrentNode() != null)
+            try
             {
                 txt.Clear();
-                txt.Text = list.GetCurrentNode().GetMyValue().ToString();
-            }
-            else
-            {
-                txt.Clear();
-                txt.Text = "Failed";
-            }
+                txt.Text = "HEAD <-> " + list.GetTailNode().GetMyValue().ToString()
+                    + " <-> " + list.GetHeadNode().GetNext().GetMyValue().ToString()
+                    + " <-> " + list.GetCurrentNode().GetMyValue().ToString() + " <-> " + "TAIL";
 
-            if (list.GetCurrentNode().GetPrevious() != null)
-            {
-                txt.Clear();
-                txt.Text = list.GetCurrentNode().
-                                       GetPrevious().GetMyValue().ToString() +
-                                       list.GetCurrentNode().GetMyValue().ToString();
             }
-            else
+            catch (NullReferenceException)
             {
-                txt.Clear();
+                MessageBox.Show("You cannot display the linked list at this time due to not having enough incorrect answers", "Invalid Selection",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (list.GetCurrentNode().GetNext() != null)
-            {
-                txt.Clear();
-                txt.Text = list.GetCurrentNode().GetMyValue().ToString()
-                                         + list.GetCurrentNode().
-                                    GetNext().GetMyValue().ToString();
-            }
-            else
-            {
-                txt.Clear();
-            }
+                
         }
 
     }

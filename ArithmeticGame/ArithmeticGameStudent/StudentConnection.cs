@@ -17,7 +17,7 @@ namespace ArithmeticGame
         public int instructorAnswer { get; set; }
         string instructorOperator { get; set; }
         private bool toggleCheck = false;
-        public short Value; 
+        public int Value { get; set; }
 
         private Socket serverSocket;
         private Socket clientSocket;
@@ -61,9 +61,6 @@ namespace ArithmeticGame
                 clientSocket = serverSocket.EndAccept(AR); // set up the clientsocket
                 buffer = new byte[clientSocket.ReceiveBufferSize]; // intialise the buffer to proper buffer size
 
-                // Send a message to the newly connected client.
-                var sendData = Encoding.ASCII.GetBytes("Hello");
-                clientSocket.BeginSend(sendData, 0, sendData.Length, SocketFlags.None, SendCallback, null);
                 // Listen for client data.
                 clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
                 // Continue listening for clients.
@@ -115,6 +112,7 @@ namespace ArithmeticGame
                 GetPackage(Package);
                 ToggleControlState(true);
 
+
                 // Start receiving data again.
                 clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
             }
@@ -138,14 +136,6 @@ namespace ArithmeticGame
             instructorOperator = package.QuestionOperator.ToString();
             instructorQuestion2 = Convert.ToInt32(package.QuestionNo2);
             instructorAnswer = Convert.ToInt32(package.QuestionAnswer);
-            Value = Convert.ToInt16(package.Value);
-            MessageBox.Show(Value.ToString());
-
-        }
-
-        public void GetValue(short value)
-        {
-            Value = value;
         }
 
         public void SetPackageAsync(TextBox txt)
@@ -198,6 +188,11 @@ namespace ArithmeticGame
                     await Task.Delay(200);
                 }
             });
+        }
+
+        public void WorkGodamnit()
+        {
+            Value = 1;
         }
 
     }
