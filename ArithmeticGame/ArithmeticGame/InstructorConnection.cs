@@ -197,7 +197,6 @@ namespace ArithmeticGame
                 ShowErrorDialog(ex.Message);
             }
         }
-
         ///-------------------------------------------------------------------------------------------------
         /// <summary>   Async callback, called on completion of connect callback. </summary>
         ///
@@ -373,7 +372,8 @@ namespace ArithmeticGame
             Value = Convert.ToInt16(package.Value);
             question = package.QuestionNo1.ToString() + " " + package.QuestionOperator.ToString() + " "
                + package.QuestionNo2.ToString() + " " + "=";
-            MessageBox.Show(Value.ToString());
+            MessageBox.Show(package.Value.ToString());
+            Value = 1;
             
             if (receivedaOperator != null)
             {
@@ -391,15 +391,22 @@ namespace ArithmeticGame
 
         public void Return(NodeList list)
         {
-            if (Value == 1)
+            Task.Run(async () =>
             {
-                list.NodeListAddatFront(new Node(instructorAnswer));
-                MessageBox.Show("Working..");
-            }
-            else
-            {
-                MessageBox.Show("Not working..");
-            }
+                while (true)
+                {
+                    if (Value == 1)
+                    {
+                        list.NodeListAddatFront(new Node(instructorAnswer));
+                    }
+                    else
+                    {
+                        await Task.Delay(300);
+                    }
+
+                   
+                }
+            });
         }
 
     }

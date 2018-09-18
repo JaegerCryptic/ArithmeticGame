@@ -175,8 +175,9 @@ namespace ArithmeticGame
             if (list.GetCurrentNode().GetPrevious() != null)
             {
                 txt.Clear();
-                txt.Text += list.GetCurrentNode().
-                                       GetPrevious().GetMyValue().ToString();
+                txt.Text = list.GetCurrentNode().
+                                       GetPrevious().GetMyValue().ToString() +
+                                       list.GetCurrentNode().GetMyValue().ToString();
             }
             else
             {
@@ -185,7 +186,8 @@ namespace ArithmeticGame
             if (list.GetCurrentNode().GetNext() != null)
             {
                 txt.Clear();
-                txt.Text += list.GetCurrentNode().
+                txt.Text = list.GetCurrentNode().GetMyValue().ToString()
+                                         + list.GetCurrentNode().
                                     GetNext().GetMyValue().ToString();
             }
             else

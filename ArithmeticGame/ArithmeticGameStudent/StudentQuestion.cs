@@ -48,11 +48,7 @@ namespace ArithmeticGame
                 short value = 1;
                 Question.GetValue(value);
 
-                Task.Run(async () =>
-                {
-                    await Task.Delay(100);
-                    Question.SendQuestion();
-                }); 
+                Question.SendQuestion();
             }
         }
     }
